@@ -16,51 +16,65 @@
 
     $.fn.bootpag = function(options){
 
-        var settings = $.extend({
+        var owner = this, settings = $.extend({
             total: 0,
-            current: 0,
-            maxVisible: 10  
-        }, options);
+            page: 0,
+            maxVisible: null
+        }, options || {});
 
         if(settings.total <= 0)
-                return this;
+            return this;
+        if(!settings.maxVisible){
+            settings.maxVisible = settings.total;
+        }
+
+        function paginationClick(){
+            
+            var me = $(this);
+
+            if(me.hasClass('disabled')){
+                return;
+            }
+            var page = parseInt(me.data('lp'), 10),
+                $page = me.parent().find('li');
+            $page.removeClass('disabled');
+            $page
+                .first()
+                .toggleClass('disabled', page === 1)
+                .data('lp', page - 1 < 1 ? 1 : page - 1);
+            $page
+                .last()
+                .toggleClass('disabled', page === settings.total)
+                .data('lp', page + 1 > settings.total ? settings.total : page + 1);
+
+            var $currPage = $page.filter('[data-lp='+page+']');
+            if(!$currPage.length){
+                var vis = Math.floor(page / settings.maxVisible) * settings.maxVisible,
+                    $el = $page.not('nav');
+                $page.not('.nav').each(function(index){
+                    var lp = index + 1 + vis;
+                    $(this).data('lp', lp).find('a').html(lp);
+                });
+                $currPage = $page.filter('[data-lp='+page+']');
+            }
+            $currPage.addClass('disabled');
+
+            owner.trigger('page', page);
+        }
 
         return this.each(function(){
 
-            $el = $(this);
+            var me = $(this),
+                p = [];
 
-            var pagination = [];
-            pagination.push('<ul>');
-            pagination.push('<ul><li data-lp="0" class="disabled"><a href="#">Prev</a></li>');
-            for(var c = 0; c < Math.max(settings.total, settings.maxVisible); c++){
-                pagination.push('<li data-lp="'+c+'"><a href="#">'+(c+1)+'</a></li>');
+            p.push('<ul><li data-lp="1" class="disabled prev nav"><a href="#">Prev</a></li>');
+            for(var c = 1; c <= Math.min(settings.total, settings.maxVisible); c++){
+                p.push('<li data-lp="'+c+'"><a href="#">'+c+'</a></li>');
             }
-            pagination.push('<li data-lp="1"><a href="#">Next</a></li>');
-            pagination.push('</ul>');
-                
-            $el.append(pagination.join('')).addClass('pagination');
-            $('.pagination li[data-lp=0]').addClass('disabled');
-            $('.pagination li').click(function(){
-                var me = $(this);
-                if(me.hasClass('disabled')){
-                    return;
-                }
-                var page = parseInt(me.data('lp'), 10);
-                // console.log(page, (page+1) * perPage, contactList.length)
-                render_avatars(contactList.slice(page * perPage, (page+1) * perPage), page, contactList.length);
-                $('.pagination li').removeClass('disabled');
-                $('.pagination li[data-lp='+page+']').addClass('disabled');
-                $('.pagination li')
-                    .first()
-                    .toggleClass('disabled', page === 0)
-                    .data('lp', page - 1 < 0 ? 0 : page -1);
-                $('.pagination li')
-                    .last()
-                    .toggleClass('disabled', (page+1) * perPage >= contactList.length)
-                    .data('lp', page + 1 > contactList.length ? Math.ceil(contactList.length / perPage) : page + 1);
-
-            });
-
+            p.push('<li data-lp="2" class="next nav"><a href="#">Next</a></li></ul>');
+            me.append(p.join('')).addClass('pagination');
+            me.find('li[data-lp=1]').addClass('disabled');
+            me.find('li').click(paginationClick);
         });
     }
 

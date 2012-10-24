@@ -9,18 +9,23 @@
     <body>
         <h1>Hello, this is BootPag - boostrap pagination</h1>
 
+        <h2>Demo 1</h2>
         <p class="demo1"></p>
+        <h2>Demo 2</h2>
         <p class="demo2"></p>
+        <h2>Demo 3</h2>
         <p class="demo3"></p>
 
         <script type="text/javascript">
             $('.demo1').bootpag({
-
+                total: 30
             });
-            $('.demo1').bootpag({
+            $('.demo2').bootpag({
                total: 300,
-               current: 0,
+               page: 1,
                maxVisible: 10 
+            }).on('page', function(event, page){
+                console.log('i has event', event, page);
             });
         </script>
     </body>
