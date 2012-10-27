@@ -16,12 +16,17 @@
 
         <h1>Hello, this is BootPag - boostrap dynamic pagination jQuery plugin</h1>
 
+        <p>For more information see <a href="http://botmonster.github.com/jquery-bootpag/">projet homepage</a></p>
+
         <h2>Demo 1</h2>
         <p class="page1">No page selected</p>
         <p class="demo1"></p>
         <h2>Demo 2</h2>
         <p class="page2">No page selected</p>
         <p class="demo2"></p>
+        <h2>Demo 3</h2>
+        <p class="page3">No page selected</p>
+        <p class="demo3"></p>
 
         <script type="text/javascript">
             $('.demo1').bootpag({
@@ -35,6 +40,15 @@
                maxVisible: 10 
             }).on('page', function(event, num){
                 $(".page2").html("Page " + num);
+            });
+            $('.demo3').bootpag({
+               total: 9,
+               page: 4,
+               maxVisible: 7,
+               href: '#page-{{number}}',
+               leaps: false
+            }).on('page', function(event, num){
+                $(".page3").html("Page " + num);
             });
         </script>
         <footer>(c) 2012 botmonster.com</footer>
