@@ -5,7 +5,7 @@
         <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.js"></script>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
-        <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
+        <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
             p.demo{
                 text-align: center;
@@ -65,15 +65,17 @@
                                 <li class=""><a href="#example-advanced">Advanced</a></li>
                                 <li class=""><a href="#example-pro">Pro</a></li>
                                 <li class=""><a href="#example-raw">Raw</a></li>
+                                <li class=""><a href="#docs">Docs</a></li>
                               </ul>
                           </div>
                         </div>
                     </div>
 
                     <div class="hero-unit">
-                        <h1>BootPag jQuery plugin</h1>
-                        <p> Hello, this is BootPag - dynamic pagination jQuery plugin. <br>
-                            Works well with <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a>.<br>
+                        <p> Hello, this is bootpag - dynamic pagination jQuery plugin. <br>
+                            Works well with <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> or standalone.<br>
+                        </p>
+                        <p>
                             <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag/zipball/master">Download .zip</a> or fork on <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag">github</a>
                         </p>
                     </div>
@@ -204,6 +206,32 @@
 }).on("page", function(event, num){
     $(".content4").html("Page " + num); // or some ajax content loading...
 }).removeClass('pagination'); </pre>
+
+
+                    <h2 id="docs">Documentation</h2>
+
+                    <p>
+                        Parameters <code>$(element).bootpag({...})</code>
+                        <ul>
+                            <li><code>total</code> number of pages</li>
+                            <li><code>maxVisible</code> maximum number of visible pages</li>
+                            <li><code>page</code> page to show on start</li>
+                            <li><code>leaps</code> next/prev buttons move over one page or maximum visible pages</li>
+                            <li><code>href</code> template for pagination links (default <code>javascript:void(0);</code>)</li>
+                            <li><code>hrefVariable</code> variable name in <i>href</i> template for page number (default <code>{{number}}</code>)</li>
+                        </ul>
+                        Events available on <i>bootpag</i> object
+                        <ul>
+                            <li><code>page</code> on page click <br>
+                                callback params:
+                                <ul>
+                                    <li><code>event</code> object</li>
+                                    <li><code>num</code> page number clicked</li>
+                                </ul>       
+                            </li>
+                            
+                        </ul>
+                    </p>
 
                     <!-- Demo time! -->
                     <script type="text/javascript">
