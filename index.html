@@ -14,7 +14,7 @@
     <body>
         <a href="https://github.com/botmonster/jquery-bootpag"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 
-        <h1>Hello, this is BootPag - boostrap dynamic pagination jQuery plugin</h1>
+        <h1>Hello, this is bootpag - dynamic pagination jQuery plugin</h1>
 
         <p>For more information see <a href="http://botmonster.github.com/jquery-bootpag/">projet homepage</a></p>
 
@@ -37,7 +37,7 @@
             $('.demo2').bootpag({
                total: 23,
                page: 1,
-               maxVisible: 10 
+               maxVisible: 10,
             }).on('page', function(event, num){
                 $(".page2").html("Page " + num);
             });
@@ -46,7 +46,9 @@
                page: 4,
                maxVisible: 7,
                href: '#page-{{number}}',
-               leaps: false
+               leaps: false,
+               prev: 'lower',
+               next: 'higher'
             }).on('page', function(event, num){
                 $(".page3").html("Page " + num);
             });
