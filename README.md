@@ -5,7 +5,8 @@ This jQuery plugin helps you create dynamic pagination in twitter bootstrap or s
 
 #Example
 
-Page that loads dynamic number of pages.
+Page that dynamic loads number of pages.
+More examples can be found on http://botmonster.github.com/jquery-bootpag
 
 ```html
 <p class="content">Dynamic page content</p>
