@@ -3,29 +3,36 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="bootpag.js"></script>
-
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
+        <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
+        <style type="text/css">
+            p{
+                text-align: center;
+            }
+        </style>
     </head>
     <body>
-        <h1>Hello, this is BootPag - boostrap pagination</h1>
+        <h1>Hello, this is BootPag - boostrap dynamic pagination jQuery plugin</h1>
 
         <h2>Demo 1</h2>
+        <p class="page1">No page selected</p>
         <p class="demo1"></p>
         <h2>Demo 2</h2>
+        <p class="page2">No page selected</p>
         <p class="demo2"></p>
-        <h2>Demo 3</h2>
-        <p class="demo3"></p>
 
         <script type="text/javascript">
             $('.demo1').bootpag({
-                total: 30
-            });
+                total: 15
+            }).on("page", function(event, num){
+                $(".page1").html("Page " + num);
+            }); 
             $('.demo2').bootpag({
-               total: 300,
+               total: 23,
                page: 1,
                maxVisible: 10 
-            }).on('page', function(event, page){
-                console.log('i has event', event, page);
+            }).on('page', function(event, num){
+                $(".page2").html("Page " + num);
             });
         </script>
     </body>
