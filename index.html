@@ -1,81 +1,94 @@
-<!DOCTYPE html>
 <html>
+    <head>
+        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.js"></script>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
+        <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
+        <style type="text/css">
+            p.demo{
+                text-align: center;
+            }
+        </style>
+        <link href="prettify.css" type="text/css" rel="stylesheet" />
+        <script type="text/javascript" src="prettify.js"></script>
+    </head>
+    <body onload="prettyPrint()">
+        <a href="https://github.com/botmonster/jquery-bootpag"><img style="position: absolute; top: 0; right: 0; border: 0;z-index:9999;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub"></a>
 
-  <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="jQuery-bootpag : jQuery BootPag - boostrap dynamic pagination jQuery plugin" />
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span8 offset2">
+                    <div class="navbar">
+                          <div class="navbar-inner">
+                            <div class="container">
+                              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                              </a>
+                              <a class="brand" href="#">jQuery bootpag</a>
+                          </div>
+                        </div>
+                    </div>
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+                    <div class="hero-unit">
+                        <h1>BootPag jQuery plugin</h1>
+                        <p> Hello, this is BootPag - dynamic pagination jQuery plugin. <br>
+                            Works well with <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a>.<br>
+                            <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag/zipball/master">Download .zip</a> or fork on <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag">github</a>
+                        </p>
+                    </div>
 
-    <title>jQuery-bootpag</title>
-  </head>
+                    <h2>Getting started</h2>
 
-  <body>
+                    <p>
+                        Download plugin and include script in your html page <code>&lt;script type="text/javascript" src="jquery.bootpag.js"&gt;</script></code> then prepare html element which should contain pagination. <br>
+                        After page load init BootPag with number of total pages <code>$('.my-element').bootpag({total: 15})</code>.<br> 
+                        From now on you can listen for page changes <code>$('.my-element').on("page", function(event, num){});</code>
+                    </p>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/botmonster/jquery-bootpag">View on GitHub</a>
-
-          <h1 id="project_title">jQuery-bootpag</h1>
-          <h2 id="project_tagline">jQuery BootPag - boostrap dynamic pagination jQuery plugin</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/botmonster/jquery-bootpag/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/botmonster/jquery-bootpag/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
+                    <h2>Simple example</h2>
+                    <p class="well demo content1">
+                        Init with 15 pages.
+                    </p>
+                    <p class="demo demo1"></p>
+                    <h3>Source</h3>
+                    <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
+    total: 15
+}).on("page", function(event, num){
+    $(".content").html("Page " + num);
+});</pre>
+                    <h2>Advanced example</h2>
+                    <p class="well demo content2">
+                        Init with 23 pages. Visible only 10 an once. Start with page 1. On click change content of this paragraph.
+                    </p>
+                    <p class="demo demo2"></p>
+                    <h3>Source</h3>
+                    <pre class="prettyprint linenums languague-js">$('.demo2').bootpag({
+   total: 23,
+   page: 1,
+   maxVisible: 10 
+}).on('page', function(event, num){
+    $(".page2").html("Page " + num);
+});</pre>
+                    <script type="text/javascript">
+                        $('.demo1').bootpag({
+                            total: 15
+                        }).on("page", function(event, num){
+                            $(".content1").html("Page " + num);
+                        }); 
+                        $('.demo2').bootpag({
+                           total: 23,
+                           page: 1,
+                           maxVisible: 10 
+                        }).on('page', function(event, num){
+                            $(".content2").html("Page " + num);
+                        });
+                    </script>
+                    <footer><p>&copy; 2012 botmonster.com</p></footer>
+            </div>
+        </div>
     </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h1>BootPag - boostrap dynamic pagination jQuery plugin</h1>
-
-<p>This jQuery plugin helps you create dynamic pagination in twitter bootstrap or simple html pages.</p>
-
-<h1>Example</h1>
-
-<p>Page that loads dynamic number of pages.</p>
-
-<div class="highlight"><pre><span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>Dynamic page content<span class="nt">&lt;/p&gt;</span>
-<span class="nt">&lt;p</span> <span class="na">class=</span><span class="s">"pagination-here"</span><span class="nt">&gt;&lt;/p&gt;</span>
-</pre></div>
-
-<div class="highlight"><pre>
-<span class="nx">$</span><span class="p">(</span><span class="s1">'.pagination-here'</span><span class="p">).</span><span class="nx">bootpag</span><span class="p">({</span>
-    <span class="nx">total</span><span class="o">:</span> <span class="mi">38</span><span class="p">,</span>          <span class="c1">// total pages</span>
-    <span class="nx">page</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span>            <span class="c1">// default page</span>
-    <span class="nx">maxVisible</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span>     <span class="c1">// visible pagination</span>
-    <span class="nx">leaps</span><span class="o">:</span> <span class="kc">true</span>         <span class="c1">// next/prev leaps through maxVisible</span>
-<span class="p">}).</span><span class="nx">on</span><span class="p">(</span><span class="s2">"page"</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">,</span> <span class="nx">num</span><span class="p">){</span>
-    <span class="nx">$</span><span class="p">(</span><span class="s2">".content"</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="s2">"Page "</span> <span class="o">+</span> <span class="nx">num</span><span class="p">);</span> <span class="c1">// or some ajax content loading...</span>
-<span class="p">});</span> 
-
-</pre></div>
-      </section>
-    </div>
-
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">jQuery-bootpag maintained by <a href="https://github.com/botmonster">botmonster</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
-
-              <script type="text/javascript">
-            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-          </script>
-          <script type="text/javascript">
-            try {
-              var pageTracker = _gat._getTracker("UA-35606307-2");
-            pageTracker._trackPageview();
-            } catch(err) {}
-          </script>
-
-
-  </body>
+    </body>
 </html>
