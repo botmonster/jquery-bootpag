@@ -10,6 +10,9 @@
             p.demo{
                 text-align: center;
             }
+            p.demo.demo4{
+                text-align: left;
+            }
             .bs-docs-example {
             position: relative;
             margin: 15px 0;
@@ -58,6 +61,7 @@
                                 <li class=""><a href="#example-simple">Simple</a></li>
                                 <li class=""><a href="#example-advanced">Advanced</a></li>
                                 <li class=""><a href="#example-pro">Pro</a></li>
+                                <li class=""><a href="#example-raw">Raw</a></li>
                               </ul>
                           </div>
                         </div>
@@ -160,6 +164,24 @@
 }).on('page', function(event, num){
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
+                    <h2 id="example-raw">Raw example</h2>
+                    <ul>
+                        <li>Init with 3 pages (no <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> here).</li>
+                    </ul>
+                    <div class="bs-docs-example">
+                        <p class="well demo content4">
+                            Dynamic content here.
+                        </p>
+                        <p class="demo demo4"></p>
+                    </div>
+                    <h3>Source</h3>
+                    <pre class="prettyprint linenums languague-js">$('.demo4').bootpag({
+    total: 3
+}).on("page", function(event, num){
+    $(".content4").html("Page " + num); // or some ajax content loading...
+}).removeClass('pagination'); </pre>
+
+                    <!-- Demo time! -->
                     <script type="text/javascript">
                         $('.demo1').bootpag({
                             total: 15
@@ -182,7 +204,13 @@
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
+                        $('.demo4').bootpag({
+                            total: 3
+                        }).on("page", function(event, num){
+                            $(".content4").html("Page " + num); // or some ajax content loading...
+                        }).removeClass('pagination'); 
                     </script>
+
                     <footer><p>&copy; 2012 botmonster.com</p></footer>
             </div>
         </div>
