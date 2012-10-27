@@ -173,6 +173,7 @@
                         <li>Visible only 6 at once.</li>
                         <li>Prev/Next do no leap.</li>
                         <li>Use template for hrefs: <code>"#pro-page-{{number}}"</code>.</li>
+                        <li>Custom next/prev text</li>
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content3">
@@ -186,7 +187,9 @@
    page: 5,
    maxVisible: 6,
    href: "#pro-page-{{number}}",
-   leaps: false
+   leaps: false,
+   next: 'next',
+   prev: null
 }).on('page', function(event, num){
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
@@ -217,6 +220,8 @@
                             <li><code>maxVisible</code> maximum number of visible pages</li>
                             <li><code>page</code> page to show on start</li>
                             <li><code>leaps</code> next/prev buttons move over one page or maximum visible pages</li>
+                            <li><code>next</code> text (default <code>&raquo;</code>)</li>
+                            <li><code>prev</code> text (default <code>&laquo;</code>)</li>
                             <li><code>href</code> template for pagination links (default <code>javascript:void(0);</code>)</li>
                             <li><code>hrefVariable</code> variable name in <i>href</i> template for page number (default <code>{{number}}</code>)</li>
                         </ul>
@@ -252,7 +257,9 @@
                            page: 5,
                            maxVisible: 6,
                            href: "#pro-page-{{number}}",
-                           leaps: false
+                           leaps: false, 
+                           next: 'next',
+                           prev: null
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
