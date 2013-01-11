@@ -36,7 +36,7 @@
             }); 
             $('.demo2').bootpag({
                total: 23,
-               page: 1,
+               page: 4,
                maxVisible: 10,
             }).on('page', function(event, num){
                 $(".page2").html("Page " + num);
@@ -52,7 +52,12 @@
             }).on('page', function(event, num){
                 $(".page3").html("Page " + num);
             });
+
+            $('.demo3').bootpag({
+               total: 3,
+               page: 2
+            });
         </script>
-        <footer>(c) 2012 botmonster.com</footer>
+        <footer>(c) 2013 botmonster.com</footer>
     </body>
 </html>
