@@ -1,7 +1,7 @@
-/*!
+/*
  * bootpag - jQuery plugin for dynamic pagination
  *
- * Copyright (c) 2012 botmonster@7items.com
+ * Copyright (c) 2013 botmonster@7items.com
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
@@ -9,7 +9,7 @@
  * Project home:
  *   http://botmonster.github.com/jquery-bootpag
  *
- * Version:  1.0
+ * Version:  1.0.2
  *
  */
 (function($, window) {
@@ -26,24 +26,24 @@
                 hrefVariable: '{{number}}',
                 next: '&raquo;',
                 prev: '&laquo;'
-            }, options || {});
+            }, 
+            $owner.settings || {}, 
+            options || {});
 
         if(settings.total <= 0)
             return this;
+
         if(!settings.maxVisible){
             settings.maxVisible = settings.total;
         }
 
-        function paginationClick(){
-            
-            var me = $(this), lp;
+        $owner.settings = settings;
 
-            if(me.hasClass('disabled')){
-                return;
-            }
-            var page = parseInt(me.attr('data-lp'), 10),
+        function renderPage($bootpag, page){
+        
+            var lp,
                 vis = Math.floor(page / settings.maxVisible) * settings.maxVisible,
-                $page = me.parent().find('li');
+                $page = $bootpag.find('li');
 
             $page.removeClass('disabled');
             lp = page - 1 < 1 ? 1 : 
@@ -79,6 +79,7 @@
             $owner.trigger('page', page);
         }
 
+
         function href(c){
 
             return settings.href.replace(settings.hrefVariable, c);
@@ -86,8 +87,8 @@
 
         return this.each(function(){
 
-            var lp, me = $(this),
-                p = ['<ul>'];
+            var $bootpag, lp, me = $(this),
+                p = ['<ul class="bootpag">'];
 
             if(settings.prev){
                 p.push('<li data-lp="1" class="prev"><a href="'+href(1)+'">'+settings.prev+'</a></li>');
@@ -101,9 +102,18 @@
                 p.push('<li data-lp="'+lp+'" class="next"><a href="'+href(lp)+'">'+settings.next+'</a></li>');
             }
             p.push('</ul>');
+            me.find('ul.bootpag').remove();
             me.append(p.join('')).addClass('pagination');
-            me.find('li[data-lp=1]').addClass('disabled');
-            me.find('li').click(paginationClick);
+            $bootpag = me.find('ul.bootpag');
+            me.find('li').click(function paginationClick(){
+            
+                var me = $(this);
+                if(me.hasClass('disabled')){
+                    return;
+                }
+                renderPage($bootpag, parseInt(me.attr('data-lp'), 10));
+            });
+            renderPage($bootpag, settings.page);
         });
     }
 
