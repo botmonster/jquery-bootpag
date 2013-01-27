@@ -1,7 +1,7 @@
 {
     "name": "bootpag",
     "title": "Bootpag",
-    "description": "bootpag - dynamic pagination jQuery plugin.",
+    "description": "bootpag - dynamic pagination jQuery plugin. Works well with twitter bootstrap or standalone.",
     "keywords": [
         "pagination"
     ],
