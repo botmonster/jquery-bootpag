@@ -24,3 +24,6 @@ $('#pagination-here').bootpag({
 }); 
 
 ```
+#License
+
+Plugin available under MIT license (see LICENSE.txt)
