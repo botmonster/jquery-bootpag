@@ -2,7 +2,7 @@
     <head>
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="lib/jquery.bootpag.js"></script>
+        <script type="text/javascript" src="lib/jquery.bootpag.min.js"></script>
         <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
         <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
         <style type="text/css">
@@ -36,14 +36,15 @@
             }); 
             $('.demo2').bootpag({
                total: 23,
-               page: 4,
+               page: 14,
                maxVisible: 10,
             }).on('page', function(event, num){
                 $(".page2").html("Page " + num);
             });
+
             $('.demo3').bootpag({
                total: 9,
-               page: 4,
+               page: 14,
                maxVisible: 7,
                href: '#page-{{number}}',
                leaps: false,
