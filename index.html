@@ -3,7 +3,7 @@
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/jquery.bootpag.js"></script>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet">
         <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
         <style type="text/css">
             p{
@@ -27,13 +27,16 @@
         <h2>Demo 3</h2>
         <p class="page3">No page selected</p>
         <p class="demo3"></p>
+        <h2>Demo 4</h2>
+        <p class="page4">No page selected</p>
+        <p class="demo4 pagination"></p>
 
         <script type="text/javascript">
             $('.demo1').bootpag({
                 total: 15
             }).on("page", function(event, num){
                 $(".page1").html("Page " + num);
-            }); 
+            });
             $('.demo2').bootpag({
                total: 23,
                page: 14,
@@ -57,6 +60,18 @@
             $('.demo3').bootpag({
                total: 3,
                page: 2
+            });
+
+            $('.demo4').bootpag({
+               total: 50,
+               page: 2,
+			   maxVisible: 5,
+               leaps: true,
+			   firstLastUse: true,
+			   first: 'FIRST',
+			   last: 'LAST'
+            }).on('page', function(event, num){
+                $(".page4").html("Page " + num);
             });
         </script>
         <footer>(c) 2013 botmonster.com</footer>
