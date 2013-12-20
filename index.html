@@ -115,7 +115,7 @@
 &lt;head&gt;
     &lt;script src="//code.jquery.com/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
     &lt;script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"&gt;&lt;/script&gt;
-    &lt;script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.js"&gt;&lt;/script&gt;
+    &lt;script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"&gt;&lt;/script&gt;
     &lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
@@ -135,7 +135,7 @@
 
                     <h2 id="example-simple">Simple example</h2>
                     <ul>
-                        <li>Init with 15 pages.</li>
+                        <li>Init with 5 pages. Change total to 10 on click.</li>
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content1">
@@ -145,9 +145,13 @@
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
-    total: 15
+    total: 5
 }).on("page", function(event, num){
     $(".content").html("Page " + num); // or some ajax content loading...
+    
+    // ... after content load -> change total to 10
+    $(this).bootpag({total: 10, maxVisible: 10});
+
 });</pre>
                     <h2 id="example-advanced">Advanced example</h2>
                     <ul>
@@ -245,9 +249,11 @@
                     <!-- Demo time! -->
                     <script type="text/javascript">
                         $('.demo1').bootpag({
-                            total: 15
-                        }).on("page", function(event, num){
-                            $(".content1").html("Page " + num); // or some ajax content loading...
+                            total: 5
+                            }).on("page", function(event, num){
+                                $(".content").html("Page " + num); // or some ajax content loading...
+                                // ... after content load -> change total to 10
+                                $(this).bootpag({total: 10, maxVisible: 10});
                         }); 
                         $('.demo2').bootpag({
                            total: 23,
