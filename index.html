@@ -21,7 +21,7 @@
 
 <h2 id="example-simple">Simple example</h2>
                     <ul>
-                        <li>Init with 15 pages.</li>
+                        <li>Init with 5 pages. Change total to 10 on click.</li>
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content1">
@@ -31,7 +31,7 @@
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
-    total: 15
+    total: 5
 }).on("page", function(event, num){
     $(".content").html("Page " + num); // or some ajax content loading...
     
