@@ -67,7 +67,6 @@
                                 <li class=""><a href="#example-simple">Simple</a></li>
                                 <li class=""><a href="#example-advanced">Advanced</a></li>
                                 <li class=""><a href="#example-pro">Pro</a></li>
-                                <li class=""><a href="#example-raw">Raw</a></li>
                                 <li class=""><a href="#docs">Docs</a></li>
                               </ul>
                             </div>
@@ -77,7 +76,7 @@
 
                     <div class="jumbotron">
                         <p> Hello, this is bootpag - dynamic pagination jQuery plugin. <br>
-                            Works well with <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> or standalone.<br>
+                            Works well with <a href="http://getbootstrap.com">Bootstrap 3.0.3</a> or standalone.<br>
                         </p>
                         <p>
                             <a class="btn btn-primary btn-large" href="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js">Download</a> or fork on <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag">github</a>
@@ -201,22 +200,7 @@
 }).on('page', function(event, num){
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
-                    <h2 id="example-raw">Raw example</h2>
-                    <ul>
-                        <li>Init with 3 pages (no <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> here).</li>
-                    </ul>
-                    <div class="bs-docs-example">
-                        <p class="well demo content4">
-                            Dynamic content here.
-                        </p>
-                        <p class="demo demo4"></p>
-                    </div>
-                    <h3>Source</h3>
-                    <pre class="prettyprint linenums languague-js">$('.demo4').bootpag({
-    total: 3
-}).on("page", function(event, num){
-    $(".content4").html("Page " + num); // or some ajax content loading...
-}).removeClass('pagination'); </pre>
+                
 
 
                     <h2 id="docs">Documentation</h2>
@@ -273,11 +257,6 @@
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
-                        $('.demo4').bootpag({
-                            total: 3
-                        }).on("page", function(event, num){
-                            $(".content4").html("Page " + num); // or some ajax content loading...
-                        }).removeClass('pagination'); 
                     </script>
 
                     <div id="disqus_thread"></div>
