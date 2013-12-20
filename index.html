@@ -34,6 +34,10 @@
     total: 15
 }).on("page", function(event, num){
     $(".content").html("Page " + num); // or some ajax content loading...
+    
+    // ... after content load -> change total to 10
+    $(this).bootpag({total: 10, maxVisible: 10});
+
 });</pre>
                     <h2 id="example-advanced">Advanced example</h2>
                     <ul>
@@ -102,14 +106,19 @@
 
 <!-- Demo time! -->
                     <script type="text/javascript">
-                        $('.demo1').bootpag({
-                            total: 15
+                        a = $('.demo1').bootpag({
+                            total: 5
                         }).on("page", function(event, num){
                             $(".content1").html("Page " + num); // or some ajax content loading...
+                            
+                            // ... after content load -> change total to 10
+                            $(this).bootpag({total: 10, maxVisible: 10});
+
                         }); 
+
                         $('.demo2').bootpag({
                            total: 23,
-                           page: 1,
+                           page: 3,
                            maxVisible: 10 
                         }).on('page', function(event, num){
                             $(".content2").html("Page " + num); // or some ajax content loading...
@@ -129,10 +138,8 @@
                             total: 3
                         }).on("page", function(event, num){
                             $(".content4").html("Page " + num); // or some ajax content loading...
-                        }).removeClass('pagination'); 
+                        }).find('.pagination').removeClass('pagination'); 
                     </script>
-
-
 
         <footer>(c) 2013 botmonster.com</footer>
     </body>
