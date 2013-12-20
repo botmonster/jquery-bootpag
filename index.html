@@ -1,13 +1,14 @@
 <!doctype html>
 <html>
     <head>
-        <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-        <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jquery.bootpag.js"></script>
-        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap-combined.min.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
-            p.demo{
+           p.demo{
                 text-align: center;
             }
             p.demo.demo4{
@@ -51,27 +52,30 @@
         <div class="container">
             <div class="row-fluid">
                 <div class="span8 offset2">
-                    <div class="navbar">
-                          <div class="navbar-inner">
-                            <div class="container">
-                              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                              </a>
-                              <a class="brand" href="#">jQuery bootpag</a>
-                              <ul class="nav">
+                    <div class="navbar navbar-default" role="navigation">
+                        <div class="navbar-header">
+                          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                          </button>
+                          <a class="navbar-brand" href="./">jQuery bootpag</a>
+                        </div>
+                        <div class="navbar-collapse collapse">
+                              <ul class="nav navbar-nav">
                                 <li class=""><a href="#example-simple">Simple</a></li>
                                 <li class=""><a href="#example-advanced">Advanced</a></li>
                                 <li class=""><a href="#example-pro">Pro</a></li>
                                 <li class=""><a href="#example-raw">Raw</a></li>
                                 <li class=""><a href="#docs">Docs</a></li>
                               </ul>
-                          </div>
+                            </div>
                         </div>
-                    </div>
+                    </div> 
 
-                    <div class="hero-unit">
+
+                    <div class="jumbotron">
                         <p> Hello, this is bootpag - dynamic pagination jQuery plugin. <br>
                             Works well with <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> or standalone.<br>
                         </p>
@@ -109,9 +113,10 @@
 <pre class="prettyprint linenums languague-html">
 &lt;html&gt;
 &lt;head&gt;
-    &lt;script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"&gt;&lt;/script&gt;
-    &lt;script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;script src="//code.jquery.com/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
+    &lt;script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"&gt;&lt;/script&gt;
     &lt;script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.js"&gt;&lt;/script&gt;
+    &lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div id="content"&gt;Dynamic Content goes here&lt;/div&gt;
@@ -284,7 +289,7 @@
                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-                    <footer><p>&copy; 2012 <a href="http://botmonster.com">botmonster.com</a></p></footer>
+                    <footer><p>&copy; 2013 <a href="http://botmonster.com">botmonster.com</a></p></footer>
             </div>
         </div>
     </div>
