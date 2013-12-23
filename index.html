@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
         <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
-           p.demo{
+            p.demo{
                 text-align: center;
             }
             p.demo.demo4{
@@ -41,6 +41,9 @@
             }
             .addthis-buttons{
                 width: 80px;
+            }
+            .pagination>.disabled>span, .pagination>.disabled>span:hover, .pagination>.disabled>span:focus, .pagination>.disabled>a, .pagination>.disabled>a:hover, .pagination>.disabled>a:focus{
+                cursor: pointer !important;
             }
         </style>
         <link href="prettify.css" type="text/css" rel="stylesheet" />
@@ -146,7 +149,7 @@
                     <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
     total: 5
 }).on("page", function(event, num){
-    $(".content").html("Page " + num); // or some ajax content loading...
+    $(".content1").html("Page " + num); // or some ajax content loading...
     
     // ... after content load -> change total to 10
     $(this).bootpag({total: 10, maxVisible: 10});
@@ -235,7 +238,7 @@
                         $('.demo1').bootpag({
                             total: 5
                             }).on("page", function(event, num){
-                                $(".content").html("Page " + num); // or some ajax content loading...
+                                $(".content1").html("Page " + num); // or some ajax content loading...
                                 // ... after content load -> change total to 10
                                 $(this).bootpag({total: 10, maxVisible: 10});
                         }); 
