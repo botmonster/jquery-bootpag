@@ -102,7 +102,14 @@
     leaps: true,
     firstLastUse: true,
     first: 'FIRST',
-    last: 'LAST'
+    last: 'LAST',
+    wrapClass: 'pagination',
+    activeClass: 'active',
+    disabledClass: 'disabled',
+    nextClass: 'next',
+    prevClass: 'prev',
+    lastClass: 'last',
+    firstClass: 'first'
 }).on("page", function(event, num){
     $(".content4").html("Page " + num); // or some ajax content loading...
 }); </pre>
@@ -144,7 +151,14 @@
                             leaps: true,
                             firstLastUse: true,
                             first: 'FIRST',
-                            last: 'LAST'
+                            last: 'LAST',
+                            wrapClass: 'pagination',
+                            activeClass: 'active',
+                            disabledClass: 'disabled',
+                            nextClass: 'next',
+                            prevClass: 'prev',
+                            lastClass: 'last',
+                            firstClass: 'first'
                         }).on("page", function(event, num){
                             $(".content4").html("Page " + num); // or some ajax content loading...
                         }).find('.pagination');
