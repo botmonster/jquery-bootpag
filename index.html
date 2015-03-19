@@ -186,6 +186,7 @@
                         </ul>
                     </p>
 
+<!-- Demo time! -->
 <h2 id="example-simple">Simple example</h2>
                     <ul>
                         <li>Init with 5 pages.</li>
@@ -211,7 +212,7 @@
                     <ul>
                         <li>Init with 23 pages.</li>
                         <li>Visible only 10 at once.</li>
-                        <li>Start with page 1.</li>
+                        <li>Start with page 3.</li>
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content2">
@@ -222,7 +223,7 @@
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo2').bootpag({
    total: 23,
-   page: 1,
+   page: 3,
    maxVisible: 10
 }).on('page', function(event, num){
     $(".content2").html("Page " + num); // or some ajax content loading...
@@ -256,21 +257,26 @@
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
                     <h2 id="example-full">Full example</h2>
+                    <ul>
+                        <li>Use all options available</li>
+                        <li>Init two bootpags for same content</li>
+                    </ul>
                     <div class="bs-docs-example">
+                        <p class="demo demo4_top"></p>
                         <p class="well demo content4">
                             Dynamic content here.
                         </p>
-                        <p class="demo demo4"></p>
+                        <p class="demo demo4_bottom"></p>
                     </div>
                     <h3>Source</h3>
-                    <pre class="prettyprint linenums languague-js">$('.demo4').bootpag({
+                    <pre class="prettyprint linenums languague-js">$('.demo4_top,.demo4_bottom').bootpag({
     total: 50,
     page: 2,
     maxVisible: 5,
     leaps: true,
     firstLastUse: true,
-    first: 'FIRST',
-    last: 'LAST',
+    first: '<span aria-hidden="true">&larr;</span>',
+    last: '<span aria-hidden="true">&rarr;</span>',
     wrapClass: 'pagination',
     activeClass: 'active',
     disabledClass: 'disabled',
@@ -282,7 +288,6 @@
     $(".content4").html("Page " + num); // or some ajax content loading...
 }); </pre>
 
-<!-- Demo time! -->
                     <script type="text/javascript">
                         a = $('.demo1').bootpag({
                             total: 5
@@ -293,7 +298,6 @@
                             $(this).bootpag({total: 10, maxVisible: 10});
 
                         });
-
                         $('.demo2').bootpag({
                            total: 23,
                            page: 3,
@@ -312,14 +316,14 @@
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
-                        $('.demo4').bootpag({
+                        $('.demo4_top,.demo4_bottom').bootpag({
                             total: 50,
                             page: 2,
                             maxVisible: 5,
                             leaps: true,
                             firstLastUse: true,
-                            first: 'FIRST',
-                            last: 'LAST',
+                            first: '<span aria-hidden="true">&larr;</span>',
+                            last: '<span aria-hidden="true">&rarr;</span>',
                             wrapClass: 'pagination',
                             activeClass: 'active',
                             disabledClass: 'disabled',
