@@ -3,8 +3,8 @@
         <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/jquery.bootpag.js"></script>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <title>BootPag - boostrap dynamic pagination jQuery plugin</title>
         <style type="text/css">
             p{
@@ -34,7 +34,7 @@
     total: 5
 }).on("page", function(event, num){
     $(".content").html("Page " + num); // or some ajax content loading...
-    
+
     // ... after content load -> change total to 10
     $(this).bootpag({total: 10, maxVisible: 10});
 
@@ -47,7 +47,7 @@
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content2">
-                             Dynamic content here. 
+                             Dynamic content here.
                         </p>
                         <p class="demo demo2"></p>
                     </div>
@@ -55,7 +55,7 @@
                     <pre class="prettyprint linenums languague-js">$('.demo2').bootpag({
    total: 23,
    page: 1,
-   maxVisible: 10 
+   maxVisible: 10
 }).on('page', function(event, num){
     $(".content2").html("Page " + num); // or some ajax content loading...
 });</pre>
@@ -71,7 +71,7 @@
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content3">
-                            Dynamic content here. 
+                            Dynamic content here.
                         </p>
                         <p class="demo demo3"></p>
                     </div>
@@ -88,9 +88,6 @@
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
                     <h2 id="example-raw">Raw example</h2>
-                    <ul>
-                        <li>Init with 3 pages (no <a href="http://twitter.github.com/bootstrap/">twitter bootstrap</a> here).</li>
-                    </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content4">
                             Dynamic content here.
@@ -99,10 +96,16 @@
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo4').bootpag({
-    total: 3
+    total: 50,
+    page: 2,
+    maxVisible: 5,
+    leaps: true,
+    firstLastUse: true,
+    first: 'FIRST',
+    last: 'LAST'
 }).on("page", function(event, num){
     $(".content4").html("Page " + num); // or some ajax content loading...
-}).removeClass('pagination'); </pre>
+}); </pre>
 
 <!-- Demo time! -->
                     <script type="text/javascript">
@@ -110,16 +113,16 @@
                             total: 5
                         }).on("page", function(event, num){
                             $(".content1").html("Page " + num); // or some ajax content loading...
-                            
+
                             // ... after content load -> change total to 10
                             $(this).bootpag({total: 10, maxVisible: 10});
 
-                        }); 
+                        });
 
                         $('.demo2').bootpag({
                            total: 23,
                            page: 3,
-                           maxVisible: 10 
+                           maxVisible: 10
                         }).on('page', function(event, num){
                             $(".content2").html("Page " + num); // or some ajax content loading...
                         });
@@ -128,23 +131,24 @@
                            page: 5,
                            maxVisible: 6,
                            href: "#pro-page-{{number}}",
-                           leaps: false, 
+                           leaps: false,
                            next: 'next',
                            prev: null
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
                         $('.demo4').bootpag({
-                             total: 50,
-               page: 2,
-			   maxVisible: 5,
-               leaps: true,
-			   firstLastUse: true,
-			   first: 'FIRST',
-			   last: 'LAST'                        }).on("page", function(event, num){
+                            total: 50,
+                            page: 2,
+                            maxVisible: 5,
+                            leaps: true,
+                            firstLastUse: true,
+                            first: 'FIRST',
+                            last: 'LAST'
+                        }).on("page", function(event, num){
                             $(".content4").html("Page " + num); // or some ajax content loading...
-                        }).find('.pagination').removeClass('pagination'); 
+                        }).find('.pagination');
                     </script>
 
-        <footer>(c) 2013 botmonster.com</footer>
+        <footer>(c) 2015 botmonster.com</footer>
     </body>
