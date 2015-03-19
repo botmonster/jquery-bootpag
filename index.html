@@ -1,18 +1,24 @@
 <!doctype html>
 <html>
     <head>
-        <script src="//code.jquery.com/jquery-2.0.3.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jquery.bootpag.js"></script>
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
         <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
+            p {
+              font-size: 1.2em;
+            }
             p.demo{
                 text-align: center;
             }
             p.demo.demo4{
                 text-align: left;
+            }
+            pre{
+                margin: 10px 0;
             }
             .bs-docs-example {
                 position: relative;
@@ -63,27 +69,27 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                           </button>
-                          <a class="navbar-brand" href="./">jQuery bootpag</a>
                         </div>
                         <div class="navbar-collapse collapse">
                               <ul class="nav navbar-nav">
-                                <li class=""><a href="#example-simple">Simple</a></li>
+                                <li class=""><a href="#install">Installation</a></li>
+                                <li class=""><a href="#docs">Documentation</a></li>
+                                <li class=""><a href="#example-simple">Simple Example</a></li>
                                 <li class=""><a href="#example-advanced">Advanced</a></li>
                                 <li class=""><a href="#example-pro">Pro</a></li>
-                                <li class=""><a href="#docs">Docs</a></li>
+                                <li class=""><a href="#example-full">Full</a></li>
                               </ul>
                             </div>
                         </div>
-                    </div> 
+                    </div>
 
 
                     <div class="jumbotron">
-                        <p> Hello, this is bootpag - dynamic pagination jQuery plugin. <br>
-                            Works well with <a href="http://getbootstrap.com">Bootstrap 3.0.3</a> or standalone.<br>
-                        </p>
-                        <p>
-                            <a class="btn btn-primary btn-large" href="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js">Download</a> or fork on <a class="btn btn-primary btn-large" href="https://github.com/botmonster/jquery-bootpag">github</a>
-                        </p>
+                        <h1> Hello, this is bootpag - dynamic pagination jQuery plugin. </h1>
+                        <h2>
+                            Works well with <a href="http://getbootstrap.com">Bootstrap</a> or standalone.<br>
+                        </h2>
+                        <p><a class="btn btn-primary btn-lg" href="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js">Download</a></p>
                     </div>
 
 
@@ -102,23 +108,31 @@
                     </div>
 
                     </div>
-                      
+
+                    <h2>Installation</h2>
+                    <p>
+                        <a href="https://raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js">Download</a> file or clone project from <a href="https://github.com/botmonster/jquery-bootpag">github</a>:
+                        <pre>git clone https://github.com/botmonster/jquery-bootpag.git</pre>
+                        or install from <a href="https://www.npmjs.com/package/bootpag">npm</a>:
+                        <pre>npm install bootpag</pre>
+                    </p>
+
 
                     <h2>Getting started</h2>
 
                     <p>
-                        Download plugin and include script in your html page <code>&lt;script type="text/javascript" src="jquery.bootpag.js"&gt;&lt;/script&gt;</code> then prepare empty html element which should contain <a href="http://twitter.github.com/bootstrap/components.html#pagination">pagination</a> (<i>bootpag</i> will create pagination list). <br>
-                        After page load init <i>bootpag</i> with number of total pages <code>$('.my-element').bootpag({total: 15})</code>.<br> 
+                        Download plugin and include script in your html page <code>&lt;script type="text/javascript" src="jquery.bootpag.js"&gt;&lt;/script&gt;</code> then prepare empty html element which should contain <a href="http://getbootstrap.com/components/#pagination">pagination</a> (<i>bootpag</i> will create pagination list). <br>
+                        After page load init <i>bootpag</i> with number of total pages <code>$('.my-element').bootpag({total: 15})</code>.<br>
                         From now on you can listen for page changes <code>$('.my-element').on("page", function(event, num){});</code>
                     </p>
 
 <pre class="prettyprint linenums languague-html">
 &lt;html&gt;
 &lt;head&gt;
-    &lt;script src="//code.jquery.com/jquery-2.0.3.min.js"&gt;&lt;/script&gt;
-    &lt;script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"&gt;&lt;/script&gt;
+    &lt;script src="//code.jquery.com/jquery-2.1.3.min.js"&gt;&lt;/script&gt;
+    &lt;script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"&gt;&lt;/script&gt;
     &lt;script src="//raw.github.com/botmonster/jquery-bootpag/master/lib/jquery.bootpag.min.js"&gt;&lt;/script&gt;
-    &lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"&gt;
+    &lt;link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
     &lt;div id="content"&gt;Dynamic Content goes here&lt;/div&gt;
@@ -135,9 +149,47 @@
 &lt;/html&gt;
 </pre>
 
-                    <h2 id="example-simple">Simple example</h2>
+                <h2 id="docs">Documentation</h2>
+
+                    <p>
+                        Parameters <code>$(element).bootpag({...})</code>
+                        <ul>
+                            <li><code>total</code> number of pages</li>
+                            <li><code>maxVisible</code> maximum number of visible pages</li>
+                            <li><code>page</code> page to show on start</li>
+                            <li><code>leaps</code> next/prev buttons move over one page or maximum visible pages</li>
+                            <li><code>next</code> text (default <code>&raquo;</code>)</li>
+                            <li><code>prev</code> text (default <code>&laquo;</code>)</li>
+                            <li><code>href</code> template for pagination links (default <code>javascript:void(0);</code>)</li>
+                            <li><code>hrefVariable</code> variable name in <i>href</i> template for page number (default <code>{{number}}</code>)
+                            <li><code>firstLastUse</code> do we ant first and last (default <code>true<</code>)/li>
+                            <li><code>first</code> name of first (default <code>'FIRST'</code>)</li>
+                            <li><code>last</code> name of last (default <code>'LAST'</code>)</li>
+                            <li><code>wrapClass</code> css class for wrap (default <code>'pagination'</code>)</li>
+                            <li><code>activeClass</code> css class for active (default <code>'active'</code>)</li>
+                            <li><code>disabledClass</code> css class for disabled (default <code>'disabled'</code>)</li>
+                            <li><code>nextClass</code> css class for next (default <code>'next'</code>)</li>
+                            <li><code>prevClass</code> css class for prev (default <code>'prev'</code>)</li>
+                            <li><code>lastClass</code> css class for last (default <code>'last'</code>)</li>
+                            <li><code>firstClass</code> css class for first (default <code>'first'</code>)</li>
+                        </ul>
+                        Events available on <i>bootpag</i> object
+                        <ul>
+                            <li><code>page</code> on page click <br>
+                                callback params:
+                                <ul>
+                                    <li><code>event</code> object</li>
+                                    <li><code>num</code> page number clicked</li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </p>
+
+<h2 id="example-simple">Simple example</h2>
                     <ul>
-                        <li>Init with 5 pages. Change total to 10 on click.</li>
+                        <li>Init with 5 pages.</li>
+                        <li>Change total to 10 on page select.</li>
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content1">
@@ -149,8 +201,8 @@
                     <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
     total: 5
 }).on("page", function(event, num){
-    $(".content1").html("Page " + num); // or some ajax content loading...
-    
+    $(".content").html("Page " + num); // or some ajax content loading...
+
     // ... after content load -> change total to 10
     $(this).bootpag({total: 10, maxVisible: 10});
 
@@ -163,7 +215,7 @@
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content2">
-                             Dynamic content here. 
+                             Dynamic content here.
                         </p>
                         <p class="demo demo2"></p>
                     </div>
@@ -171,7 +223,7 @@
                     <pre class="prettyprint linenums languague-js">$('.demo2').bootpag({
    total: 23,
    page: 1,
-   maxVisible: 10 
+   maxVisible: 10
 }).on('page', function(event, num){
     $(".content2").html("Page " + num); // or some ajax content loading...
 });</pre>
@@ -187,7 +239,7 @@
                     </ul>
                     <div class="bs-docs-example">
                         <p class="well demo content3">
-                            Dynamic content here. 
+                            Dynamic content here.
                         </p>
                         <p class="demo demo3"></p>
                     </div>
@@ -203,49 +255,49 @@
 }).on('page', function(event, num){
     $(".content3").html("Page " + num); // or some ajax content loading...
 });</pre>
-                
+                    <h2 id="example-full">Full example</h2>
+                    <div class="bs-docs-example">
+                        <p class="well demo content4">
+                            Dynamic content here.
+                        </p>
+                        <p class="demo demo4"></p>
+                    </div>
+                    <h3>Source</h3>
+                    <pre class="prettyprint linenums languague-js">$('.demo4').bootpag({
+    total: 50,
+    page: 2,
+    maxVisible: 5,
+    leaps: true,
+    firstLastUse: true,
+    first: 'FIRST',
+    last: 'LAST',
+    wrapClass: 'pagination',
+    activeClass: 'active',
+    disabledClass: 'disabled',
+    nextClass: 'next',
+    prevClass: 'prev',
+    lastClass: 'last',
+    firstClass: 'first'
+}).on("page", function(event, num){
+    $(".content4").html("Page " + num); // or some ajax content loading...
+}); </pre>
 
-
-                    <h2 id="docs">Documentation</h2>
-
-                    <p>
-                        Parameters <code>$(element).bootpag({...})</code>
-                        <ul>
-                            <li><code>total</code> number of pages</li>
-                            <li><code>maxVisible</code> maximum number of visible pages</li>
-                            <li><code>page</code> page to show on start</li>
-                            <li><code>leaps</code> next/prev buttons move over one page or maximum visible pages</li>
-                            <li><code>next</code> text (default <code>&raquo;</code>)</li>
-                            <li><code>prev</code> text (default <code>&laquo;</code>)</li>
-                            <li><code>href</code> template for pagination links (default <code>javascript:void(0);</code>)</li>
-                            <li><code>hrefVariable</code> variable name in <i>href</i> template for page number (default <code>{{number}}</code>)</li>
-                        </ul>
-                        Events available on <i>bootpag</i> object
-                        <ul>
-                            <li><code>page</code> on page click <br>
-                                callback params:
-                                <ul>
-                                    <li><code>event</code> object</li>
-                                    <li><code>num</code> page number clicked</li>
-                                </ul>       
-                            </li>
-                            
-                        </ul>
-                    </p>
-
-                    <!-- Demo time! -->
+<!-- Demo time! -->
                     <script type="text/javascript">
-                        $('.demo1').bootpag({
+                        a = $('.demo1').bootpag({
                             total: 5
-                            }).on("page", function(event, num){
-                                $(".content1").html("Page " + num); // or some ajax content loading...
-                                // ... after content load -> change total to 10
-                                $(this).bootpag({total: 10, maxVisible: 10});
-                        }); 
+                        }).on("page", function(event, num){
+                            $(".content1").html("Page " + num); // or some ajax content loading...
+
+                            // ... after content load -> change total to 10
+                            $(this).bootpag({total: 10, maxVisible: 10});
+
+                        });
+
                         $('.demo2').bootpag({
                            total: 23,
-                           page: 1,
-                           maxVisible: 10 
+                           page: 3,
+                           maxVisible: 10
                         }).on('page', function(event, num){
                             $(".content2").html("Page " + num); // or some ajax content loading...
                         });
@@ -254,12 +306,30 @@
                            page: 5,
                            maxVisible: 6,
                            href: "#pro-page-{{number}}",
-                           leaps: false, 
+                           leaps: false,
                            next: 'next',
                            prev: null
                         }).on('page', function(event, num){
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
+                        $('.demo4').bootpag({
+                            total: 50,
+                            page: 2,
+                            maxVisible: 5,
+                            leaps: true,
+                            firstLastUse: true,
+                            first: 'FIRST',
+                            last: 'LAST',
+                            wrapClass: 'pagination',
+                            activeClass: 'active',
+                            disabledClass: 'disabled',
+                            nextClass: 'next',
+                            prevClass: 'prev',
+                            lastClass: 'last',
+                            firstClass: 'first'
+                        }).on("page", function(event, num){
+                            $(".content4").html("Page " + num); // or some ajax content loading...
+                        }).find('.pagination');
                     </script>
 
                     <div id="disqus_thread"></div>
@@ -277,7 +347,7 @@
                     <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                     <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 
-                    <footer><p>&copy; 2013 <a href="http://botmonster.com">botmonster.com</a></p></footer>
+                    <footer><p>&copy; 2015 <a href="http://botmonster.com">botmonster.com</a></p></footer>
             </div>
         </div>
     </div>
