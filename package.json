@@ -1,0 +1,38 @@
+{
+    "name": "bootpag",
+    "title": "Bootpag",
+    "description": "bootpag - dynamic pagination jQuery plugin. Works well with twitter bootstrap or standalone.",
+    "keywords": [
+        "pagination",
+        "bootstrap",
+        "jquery-plugin",
+        "ecosystem:jquery"
+    ],
+    "version": "1.0.4",
+    "author": {
+        "name": "Botmonster",
+        "url": "http://blog.botmonster.com"
+    },
+    "maintainers": [
+        {
+            "name": "Botmonster",
+            "email": "botmonster@7items.com",
+            "url": "http://blog.botmonster.com"
+        }
+    ],
+    "licenses": [
+        {
+            "type": "MIT",
+            "url": "https://github.com/botmonster/jquery-bootpag/blob/master/LICENSE.txt"
+        }
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/botmonster/jquery-bootpag.git"
+      },
+    "bugs": "https://github.com/botmonster/jquery-bootpag/issues",
+    "homepage": "http://botmonster.github.com/jquery-bootpag",
+    "dependencies": {
+        "jquery": ">=1.6"
+    }
+}
