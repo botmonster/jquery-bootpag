@@ -1,14 +1,14 @@
 {
     "name": "bootpag",
     "title": "Bootpag",
-    "description": "bootpag - dynamic pagination jQuery plugin. Works well with twitter bootstrap or standalone.",
+    "description": "bootpag - dynamic pagination jQuery plugin. Works well with bootstrap or standalone.",
     "keywords": [
         "pagination",
         "bootstrap",
         "jquery-plugin",
         "ecosystem:jquery"
     ],
-    "version": "1.0.4",
+    "version": "1.0.6",
     "author": {
         "name": "Botmonster",
         "url": "http://blog.botmonster.com"
