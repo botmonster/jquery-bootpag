@@ -135,12 +135,16 @@
                             $(".content3").html("Page " + num); // or some ajax content loading...
                         });
                         $('.demo4').bootpag({
-                            total: 3
-                        }).on("page", function(event, num){
+                             total: 50,
+               page: 2,
+			   maxVisible: 5,
+               leaps: true,
+			   firstLastUse: true,
+			   first: 'FIRST',
+			   last: 'LAST'                        }).on("page", function(event, num){
                             $(".content4").html("Page " + num); // or some ajax content loading...
                         }).find('.pagination').removeClass('pagination'); 
                     </script>
 
         <footer>(c) 2013 botmonster.com</footer>
     </body>
-</html>
