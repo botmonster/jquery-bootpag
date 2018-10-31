@@ -34,5 +34,6 @@
     "homepage": "http://botmonster.com/jquery-bootpag",
     "dependencies": {
         "jquery": ">=1.6"
-    }
+    },
+    "main": "./lib/jquery.bootpag.min.js"
 }
