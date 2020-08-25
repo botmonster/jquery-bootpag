@@ -1,10 +1,11 @@
 <html>
     <head>
-        <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         <script type="text/javascript" src="lib/jquery.bootpag.js"></script>
         <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
         <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
             p{
@@ -30,7 +31,7 @@
                         <p class="well demo content1">
                             Dynamic content here.
                         </p>
-                        <p class="demo demo1"></p>
+                        <div class="demo demo1"></div>
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo1').bootpag({
@@ -52,7 +53,7 @@
                         <p class="well demo content2">
                              Dynamic content here.
                         </p>
-                        <p class="demo demo2"></p>
+                        <div class="demo demo2"></div>
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo2').bootpag({
@@ -76,7 +77,7 @@
                         <p class="well demo content3">
                             Dynamic content here.
                         </p>
-                        <p class="demo demo3"></p>
+                        <div class="demo demo3"></div>
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo3').bootpag({
@@ -100,7 +101,7 @@
                         <p class="well demo content4">
                             Dynamic content here.
                         </p>
-                        <p class="demo demo4_bottom"></p>
+                        <div class="demo demo4_bottom"></div>
                     </div>
                     <h3>Source</h3>
                     <pre class="prettyprint linenums languague-js">$('.demo4_top,.demo4_bottom').bootpag({
@@ -117,7 +118,8 @@
     nextClass: 'next',
     prevClass: 'prev',
     lastClass: 'last',
-    firstClass: 'first'
+    firstClass: 'first',
+    position: 'center'
 }).on("page", function(event, num){
     $(".content4").html("Page " + num); // or some ajax content loading...
 }); </pre>
@@ -164,7 +166,8 @@
                             nextClass: 'next',
                             prevClass: 'prev',
                             lastClass: 'last',
-                            firstClass: 'first'
+                            firstClass: 'first',
+                            position: 'center'
                         }).on("page", function(event, num){
                             $(".content4").html("Page " + num); // or some ajax content loading...
                         }).find('.pagination');
