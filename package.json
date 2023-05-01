@@ -8,7 +8,7 @@
         "jquery-plugin",
         "ecosystem:jquery"
     ],
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": {
         "name": "Botmonster",
         "url": "https://botmonster.com/"
@@ -29,10 +29,11 @@
     "repository": {
         "type": "git",
         "url": "git://github.com/botmonster/jquery-bootpag.git"
-      },
+    },
     "bugs": "https://github.com/botmonster/jquery-bootpag/issues",
     "homepage": "https://botmonster.com/jquery-bootpag/",
     "dependencies": {
+        "closure-compiler": "^0.2.12",
         "jquery": ">=1.6"
     },
     "main": "./lib/jquery.bootpag.min.js"
