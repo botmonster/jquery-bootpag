@@ -11,13 +11,13 @@
     "version": "1.0.7",
     "author": {
         "name": "Botmonster",
-        "url": "http://blog.botmonster.com"
+        "url": "https://botmonster.com/"
     },
     "maintainers": [
         {
             "name": "Botmonster",
             "email": "botmonster@7items.com",
-            "url": "http://blog.botmonster.com"
+            "url": "https://botmonster.com/"
         }
     ],
     "licenses": [
@@ -31,7 +31,7 @@
         "url": "git://github.com/botmonster/jquery-bootpag.git"
       },
     "bugs": "https://github.com/botmonster/jquery-bootpag/issues",
-    "homepage": "http://botmonster.com/jquery-bootpag",
+    "homepage": "https://botmonster.com/jquery-bootpag/",
     "dependencies": {
         "jquery": ">=1.6"
     },
