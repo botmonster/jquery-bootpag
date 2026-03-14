@@ -76,7 +76,7 @@
         if(settings.total <= 0)
             return this;
 
-                    if(!isNumeric(settings.maxVisible) && !settings.maxVisible){
+        if(!isNumeric(settings.maxVisible) && !settings.maxVisible){
             settings.maxVisible = parseInt(settings.total, 10);
         }
 
@@ -99,8 +99,8 @@
             settings.page = page = page < 0 ? 0 : page > settings.total ? settings.total : page;
             $page.removeClass(settings.activeClass);
             lp = page - 1 < 1 ? 1 :
-                    settings.leaps && page - 1 >= settings.maxVisible ?
-                        Math.floor((page - 1) / maxV) * maxV : page - 1;
+                settings.leaps && page - 1 >= settings.maxVisible ?
+                    Math.floor((page - 1) / maxV) * maxV : page - 1;
 
             if(settings.firstLastUse) {
                 $page
@@ -121,8 +121,8 @@
             step = settings.maxVisible == 1 ? 0 : 1;
 
             lp = page + 1 > settings.total ? settings.total :
-                    settings.leaps && page + 1 <= settings.total - settings.maxVisible ?
-                        vis + settings.maxVisible + step: page + 1;
+                settings.leaps && page + 1 <= settings.total - settings.maxVisible ?
+                    vis + settings.maxVisible + step: page + 1;
 
             var llast = $page.last();
             if(settings.firstLastUse) {
@@ -142,9 +142,9 @@
             var $currPage = $page.filter('[data-lp='+page+']');
 
             var clist = "." + [settings.nextClass,
-                               settings.prevClass,
-                               settings.firstClass,
-                               settings.lastClass].join(",.");
+                settings.prevClass,
+                settings.firstClass,
+                settings.lastClass].join(",.");
             if(!$currPage.not(clist).length){
                 var d = page <= vis ? -settings.maxVisible : 0;
                 $page.not(clist).each(function(index){
@@ -177,11 +177,11 @@
 
             if(settings.firstLastUse){
                 p = p.concat(['<li data-lp="1" class="', settings.firstClass,
-                       '"><a href="', href(1), '">', settings.first, '</a></li>']);
+                    '"><a href="', href(1), '">', settings.first, '</a></li>']);
             }
             if(settings.prev){
                 p = p.concat(['<li data-lp="1" class="', settings.prevClass,
-                       '"><a href="', href(1), '">', settings.prev, '</a></li>']);
+                    '"><a href="', href(1), '">', settings.prev, '</a></li>']);
             }
             for(var c = 1; c <= Math.min(settings.total, settings.maxVisible); c++){
                 p = p.concat(['<li data-lp="', c, '"><a href="', href(c), '">', c, '</a></li>']);
@@ -190,12 +190,12 @@
                 lp = settings.leaps && settings.total > settings.maxVisible
                     ? Math.min(settings.maxVisible + 1, settings.total) : 2;
                 p = p.concat(['<li data-lp="', lp, '" class="',
-                             settings.nextClass, '"><a href="', href(lp),
-                             '">', settings.next, '</a></li>']);
+                    settings.nextClass, '"><a href="', href(lp),
+                    '">', settings.next, '</a></li>']);
             }
             if(settings.firstLastUse){
                 p = p.concat(['<li data-lp="', settings.total, '" class="last"><a href="',
-                             href(settings.total),'">', settings.last, '</a></li>']);
+                    href(settings.total),'">', settings.last, '</a></li>']);
             }
             p.push('</ul>');
             me.find('ul.bootpag').remove();

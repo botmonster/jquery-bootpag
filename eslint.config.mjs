@@ -15,6 +15,7 @@ export default [
       }
     },
     rules: {
+      "indent": ["error", 4],
       "no-redeclare": "warn",
       "eqeqeq": "off"
     }
