@@ -1,9 +1,9 @@
 # bootpag
 
-![CI](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml/badge.svg)
-![npm](https://img.shields.io/npm/v/bootpag)
-![npm downloads](https://img.shields.io/npm/dm/bootpag)
-![License](https://img.shields.io/npm/l/bootpag)
+[![CI](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml/badge.svg)](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml)
+[![npm](https://img.shields.io/npm/v/bootpag)](https://www.npmjs.com/package/bootpag)
+[![npm downloads](https://img.shields.io/npm/dm/bootpag)](https://www.npmjs.com/package/bootpag)
+[![License](https://img.shields.io/npm/l/bootpag)](./LICENSE)
 
 Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstrap.com/docs/3.4/) or standalone.
 
