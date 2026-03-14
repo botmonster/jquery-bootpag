@@ -5,7 +5,7 @@
 ![npm downloads](https://img.shields.io/npm/dm/bootpag)
 ![License](https://img.shields.io/npm/l/bootpag)
 
-Dynamic pagination jQuery plugin. Works with [Bootstrap](https://getbootstrap.com/) or standalone.
+Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstrap.com/docs/3.4/) or standalone.
 
 ## Installation
 
