@@ -5,9 +5,9 @@
  * Copyright (c) 2015-2026 botmonster.com
  *
  * Licensed under the MIT license:
- *   http://www.opensource.org/licenses/mit-license.php
+ *   https://github.com/botmonster/jquery-bootpag/blob/main/LICENSE
  *
- * Project home:
+ * Project homepage:
  *   https://botmonster.com/jquery-bootpag/
  *
  * Version: 3.0.1
