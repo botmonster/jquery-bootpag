@@ -3,7 +3,7 @@
 [![CI](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml/badge.svg)](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml)
 [![npm](https://img.shields.io/npm/v/bootpag)](https://www.npmjs.com/package/bootpag)
 [![npm downloads](https://img.shields.io/npm/dm/bootpag)](https://www.npmjs.com/package/bootpag)
-[![License](https://img.shields.io/npm/l/bootpag)](./LICENSE)
+[![License](https://img.shields.io/npm/l/bootpag)](https://github.com/botmonster/jquery-bootpag/blob/main/LICENSE)
 
 Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstrap.com/docs/3.4/) or standalone.
 
@@ -14,21 +14,23 @@ Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstra
 npm install bootpag
 ```
 
-**CDN (unpkg):**
-```html
-<script src="https://unpkg.com/bootpag/lib/jquery.bootpag.min.js"></script>
-```
-
 **CDN (jsDelivr):**
 ```html
 <script src="https://cdn.jsdelivr.net/npm/bootpag/lib/jquery.bootpag.min.js"></script>
 ```
 
+**CDN (unpkg):**
+```html
+<script src="https://unpkg.com/bootpag/lib/jquery.bootpag.min.js"></script>
+```
+
 **Manual:** Download `jquery.bootpag.min.js` from the [latest GitHub Release](https://github.com/botmonster/jquery-bootpag/releases/latest).
 
 > **Note:** Requires jQuery >= 1.6 as a peer dependency. Make sure jQuery is loaded before bootpag.
-
+>
 ## Usage
+
+Check [live demo](https://botmonster.com/jquery-bootpag/) online or run `npm run build` and open `examples/index.html` in a browser.
 
 ```html
 <p id="content">Dynamic page content</p>
