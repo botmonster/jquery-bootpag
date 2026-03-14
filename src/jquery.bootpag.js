@@ -13,8 +13,36 @@
  * Version:  1.0.7
  *
  */
-(function($, window) {
 
+/**
+ * @typedef {Object} BootpagOptions
+ * @property {number} total - Total number of pages
+ * @property {number} page - Current active page (1-based)
+ * @property {?number} maxVisible - Maximum number of visible page buttons (defaults to total)
+ * @property {boolean} leaps - Whether next/prev jump through maxVisible ranges
+ * @property {string} href - Href template for page links (use hrefVariable as placeholder)
+ * @property {string} hrefVariable - Placeholder string replaced with page number in href
+ * @property {?string} next - Text/HTML for the next button (null to hide)
+ * @property {?string} prev - Text/HTML for the prev button (null to hide)
+ * @property {boolean} firstLastUse - Whether to show first/last page buttons
+ * @property {string} first - Text/HTML for the first page button
+ * @property {string} last - Text/HTML for the last page button
+ * @property {string} wrapClass - CSS class for the pagination ul element
+ * @property {string} activeClass - CSS class for the active page li
+ * @property {string} disabledClass - CSS class for disabled nav buttons
+ * @property {string} nextClass - CSS class for the next button li
+ * @property {string} prevClass - CSS class for the prev button li
+ * @property {string} lastClass - CSS class for the last button li
+ * @property {string} firstClass - CSS class for the first button li
+ */
+(function($) {
+
+    /**
+     * Initialize or reconfigure bootpag pagination on matched elements.
+     * Emits a "page" event on the owner element when a page is clicked.
+     * @param {BootpagOptions} options - Pagination configuration options
+     * @returns {jQuery} The jQuery object for chaining
+     */
     $.fn.bootpag = function(options){
 
         var $owner = this,
@@ -27,7 +55,7 @@
                 hrefVariable: '{{number}}',
                 next: '&raquo;',
                 prev: '&laquo;',
-				firstLastUse: false,
+                firstLastUse: false,
                 first: '<span aria-hidden="true">&larr;</span>',
                 last: '<span aria-hidden="true">&rarr;</span>',
                 wrapClass: 'pagination',
@@ -35,7 +63,7 @@
                 disabledClass: 'disabled',
                 nextClass: 'next',
                 prevClass: 'prev',
-		        lastClass: 'last',
+                lastClass: 'last',
                 firstClass: 'first'
             },
             $owner.data('settings') || {},
@@ -50,6 +78,12 @@
 
         $owner.data('settings', settings);
 
+        /**
+         * Re-render pagination state for a given page number.
+         * Updates active/disabled classes and shifts the visible page window.
+         * @param {jQuery} $bootpag - The pagination ul element
+         * @param {number} page - The page number to render as active
+         */
         function renderPage($bootpag, page){
 
             page = parseInt(page, 10);
@@ -64,47 +98,47 @@
                     settings.leaps && page - 1 >= settings.maxVisible ?
                         Math.floor((page - 1) / maxV) * maxV : page - 1;
 
-			if(settings.firstLastUse) {
-				$page
-					.first()
-					.toggleClass(settings.disabledClass, page === 1);
-			}
+            if(settings.firstLastUse) {
+                $page
+                    .first()
+                    .toggleClass(settings.disabledClass, page === 1);
+            }
 
-			var lfirst = $page.first();
-			if(settings.firstLastUse) {
-				lfirst = lfirst.next();
-			}
+            var lfirst = $page.first();
+            if(settings.firstLastUse) {
+                lfirst = lfirst.next();
+            }
 
-			lfirst
+            lfirst
                 .toggleClass(settings.disabledClass, page === 1)
                 .attr('data-lp', lp)
                 .find('a').attr('href', href(lp));
 
-            var step = settings.maxVisible == 1 ? 0 : 1;
+            step = settings.maxVisible == 1 ? 0 : 1;
 
             lp = page + 1 > settings.total ? settings.total :
                     settings.leaps && page + 1 <= settings.total - settings.maxVisible ?
                         vis + settings.maxVisible + step: page + 1;
 
-			var llast = $page.last();
-			if(settings.firstLastUse) {
-				llast = llast.prev();
-			}
+            var llast = $page.last();
+            if(settings.firstLastUse) {
+                llast = llast.prev();
+            }
 
-			llast
+            llast
                 .toggleClass(settings.disabledClass, page === settings.total)
                 .attr('data-lp', lp)
                 .find('a').attr('href', href(lp));
 
-			$page
-				.last()
-				.toggleClass(settings.disabledClass, page === settings.total);
+            $page
+                .last()
+                .toggleClass(settings.disabledClass, page === settings.total);
 
 
             var $currPage = $page.filter('[data-lp='+page+']');
 
-			var clist = "." + [settings.nextClass,
-							   settings.prevClass,
+            var clist = "." + [settings.nextClass,
+                               settings.prevClass,
                                settings.firstClass,
                                settings.lastClass].join(",.");
             if(!$currPage.not(clist).length){
@@ -122,6 +156,11 @@
             $owner.data('settings', settings);
         }
 
+        /**
+         * Generate an href string by replacing the placeholder with a page number.
+         * @param {number} c - The page number to insert into the href template
+         * @returns {string} The resolved href string
+         */
         function href(c){
 
             return settings.href.replace(settings.hrefVariable, c);
@@ -174,6 +213,6 @@
             });
             renderPage($bootpag, settings.page);
         });
-    }
+    };
 
-})(jQuery, window);
+})(jQuery);

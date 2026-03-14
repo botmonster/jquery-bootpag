@@ -1,39 +1,49 @@
 {
-    "name": "bootpag",
-    "title": "Bootpag",
-    "description": "bootpag - dynamic pagination jQuery plugin. Works well with bootstrap or standalone.",
-    "keywords": [
-        "pagination",
-        "bootstrap",
-        "jquery-plugin",
-        "ecosystem:jquery"
-    ],
-    "version": "1.0.7",
-    "author": {
-        "name": "Botmonster",
-        "url": "https://botmonster.com/"
-    },
-    "maintainers": [
-        {
-            "name": "Botmonster",
-            "email": "botmonster@7items.com",
-            "url": "https://botmonster.com/"
-        }
-    ],
-    "licenses": [
-        {
-            "type": "MIT",
-            "url": "https://github.com/botmonster/jquery-bootpag/blob/master/LICENSE"
-        }
-    ],
-    "repository": {
-        "type": "git",
-        "url": "git://github.com/botmonster/jquery-bootpag.git"
-      },
-    "bugs": "https://github.com/botmonster/jquery-bootpag/issues",
-    "homepage": "https://botmonster.com/jquery-bootpag/",
-    "dependencies": {
-        "jquery": ">=1.6"
-    },
-    "main": "./lib/jquery.bootpag.min.js"
+  "name": "bootpag",
+  "version": "1.0.7",
+  "description": "bootpag - dynamic pagination jQuery plugin. Works well with bootstrap or standalone.",
+  "keywords": [
+    "pagination",
+    "bootstrap",
+    "jquery-plugin",
+    "ecosystem:jquery"
+  ],
+  "author": "Botmonster <btm@botmonster.com> (https://botmonster.com/)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/botmonster/jquery-bootpag.git"
+  },
+  "bugs": "https://github.com/botmonster/jquery-bootpag/issues",
+  "homepage": "https://botmonster.com/jquery-bootpag/",
+  "main": "./dist/jquery.bootpag.min.js",
+  "exports": {
+    ".": "./dist/jquery.bootpag.min.js"
+  },
+  "files": [
+    "dist/",
+    "src/"
+  ],
+  "scripts": {
+    "build": "mkdir -p dist && cp src/jquery.bootpag.js dist/jquery.bootpag.js && terser src/jquery.bootpag.js -o dist/jquery.bootpag.min.js --comments '/^!|@preserve|@license/' --compress --mangle",
+    "lint": "eslint src/jquery.bootpag.js",
+    "test": "jest --coverage",
+    "pretest": "npm run lint",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "jquery": ">=1.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0",
+    "globals": "^15.0.0",
+    "jest": "^29.0.0",
+    "jest-environment-jsdom": "^29.0.0",
+    "jquery": "^3.7.0",
+    "terser": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
 }

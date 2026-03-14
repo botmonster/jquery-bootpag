@@ -1,0 +1,28 @@
+name: Publish to npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: Create GitHub Release
+        run: gh release create "${{ github.ref_name }}" dist/jquery.bootpag.min.js --generate-notes
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - run: npm publish --provenance --access public

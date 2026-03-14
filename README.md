@@ -1,12 +1,34 @@
-bootpag - dynamic pagination
-============================
+# bootpag
 
-This jQuery plugin helps you create dynamic pagination with [Bootstrap](http://getbootstrap.com/) or in any other html pages.
+![CI](https://github.com/botmonster/jquery-bootpag/actions/workflows/ci.yml/badge.svg)
+![npm](https://img.shields.io/npm/v/bootpag)
+![npm downloads](https://img.shields.io/npm/dm/bootpag)
+![License](https://img.shields.io/npm/l/bootpag)
 
-# Example
+Dynamic pagination jQuery plugin. Works with [Bootstrap](https://getbootstrap.com/) or standalone.
 
-Snippet that dynamic loads number of pages.
-More examples can be found on [project homepage](http://botmonster.com/jquery-bootpag/)
+## Installation
+
+**npm:**
+```bash
+npm install bootpag
+```
+
+**CDN (unpkg):**
+```html
+<script src="https://unpkg.com/bootpag/dist/jquery.bootpag.min.js"></script>
+```
+
+**CDN (jsDelivr):**
+```html
+<script src="https://cdn.jsdelivr.net/npm/bootpag/dist/jquery.bootpag.min.js"></script>
+```
+
+**Manual:** Download `jquery.bootpag.min.js` from the [latest GitHub Release](https://github.com/botmonster/jquery-bootpag/releases/latest).
+
+> **Note:** Requires jQuery >= 1.6 as a peer dependency. Make sure jQuery is loaded before bootpag.
+
+## Usage
 
 ```html
 <p id="content">Dynamic page content</p>
@@ -15,19 +37,63 @@ More examples can be found on [project homepage](http://botmonster.com/jquery-bo
 
 ```javascript
 $('#pagination-here').bootpag({
-    total: 7,          // total pages
-    page: 1,            // default page
-    maxVisible: 5,     // visible pagination
-    leaps: true         // next/prev leaps through maxVisible
+    total: 7,
+    page: 1,
+    maxVisible: 5,
+    leaps: true
 }).on("page", function(event, num){
     $("#content").html("Page " + num); // or some ajax content loading...
-    // ... after content load -> change total to 10
-    $(this).bootpag({total: 10, maxVisible: 10});
 });
-
 ```
-# License
 
-Plugin available under MIT license (See LICENSE file)
+## Options
 
-Copyright (c) 2013-2015 botmonster.com
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `total` | number | `0` | Total number of pages |
+| `page` | number | `1` | Current active page |
+| `maxVisible` | number | `total` | Maximum visible page buttons |
+| `leaps` | boolean | `true` | Next/prev jump through `maxVisible` ranges |
+| `href` | string | `'javascript:void(0);'` | Href template for page links |
+| `hrefVariable` | string | `'{{number}}'` | Placeholder replaced with page number in `href` |
+| `next` | string\|null | `'&raquo;'` | Next button text/HTML (`null` to hide) |
+| `prev` | string\|null | `'&laquo;'` | Prev button text/HTML (`null` to hide) |
+| `firstLastUse` | boolean | `false` | Show first/last page buttons |
+| `first` | string | `'&larr;'` | First button text/HTML |
+| `last` | string | `'&rarr;'` | Last button text/HTML |
+| `wrapClass` | string | `'pagination'` | CSS class for the `<ul>` wrapper |
+| `activeClass` | string | `'active'` | CSS class for the active page |
+| `disabledClass` | string | `'disabled'` | CSS class for disabled buttons |
+| `nextClass` | string | `'next'` | CSS class for next button |
+| `prevClass` | string | `'prev'` | CSS class for prev button |
+| `firstClass` | string | `'first'` | CSS class for first button |
+| `lastClass` | string | `'last'` | CSS class for last button |
+
+## Events
+
+### `page`
+
+Triggered when a page is clicked. Receives the page number as the second argument.
+
+```javascript
+$('#pagination').on("page", function(event, num) {
+    console.log("Page " + num + " clicked");
+});
+```
+
+## Examples
+
+See the [examples/](examples/) directory for interactive demos covering simple, advanced, pro, and full configuration usage. Run `npm run build` first, then open `examples/index.html` in a browser.
+
+## Development
+
+```bash
+npm install        # Install dependencies
+npm run lint       # Run ESLint
+npm test           # Run lint + tests with coverage
+npm run build      # Build dist/jquery.bootpag.min.js
+```
+
+## License
+
+MIT. Copyright (c) 2013-2026 [botmonster.com](https://botmonster.com)
