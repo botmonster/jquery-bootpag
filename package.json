@@ -28,6 +28,10 @@
     "build": "mkdir -p dist && cp src/jquery.bootpag.js dist/jquery.bootpag.js && terser src/jquery.bootpag.js -o dist/jquery.bootpag.min.js --comments '/^!|@preserve|@license/' --compress --mangle",
     "lint": "eslint src/jquery.bootpag.js",
     "test": "jest --coverage",
+    "test:jquery2": "npm i --no-save jquery@2.2.4 && jest --coverage",
+    "test:jquery3": "npm i --no-save jquery@3.7.1 && jest --coverage",
+    "test:jquery4": "npm i --no-save jquery@4.0.0 && jest --coverage",
+    "test:matrix": "npm run test:jquery2 && npm run test:jquery3 && npm run test:jquery4",
     "pretest": "npm run lint",
     "prepublishOnly": "npm run build"
   },

@@ -37,6 +37,10 @@
  */
 (function($) {
 
+    function isNumeric(value) {
+        return value !== null && value !== '' && !isNaN(parseFloat(value)) && isFinite(value);
+    }
+
     /**
      * Initialize or reconfigure bootpag pagination on matched elements.
      * Emits a "page" event on the owner element when a page is clicked.
@@ -72,7 +76,7 @@
         if(settings.total <= 0)
             return this;
 
-          if(!$.isNumeric(settings.maxVisible) && !settings.maxVisible){
+                    if(!isNumeric(settings.maxVisible) && !settings.maxVisible){
             settings.maxVisible = parseInt(settings.total, 10);
         }
 
