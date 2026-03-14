@@ -11,13 +11,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node-version: [24]
         jquery-version: [2.2.4, 3.7.1, 4.0.0]
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 24
       - run: npm ci
       - run: npm run lint
       - run: npm i --no-save jquery@${{ matrix.jquery-version }}
