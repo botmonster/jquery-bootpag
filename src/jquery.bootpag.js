@@ -2,15 +2,15 @@
  * @preserve
  * bootpag - jQuery plugin for dynamic pagination
  *
- * Copyright (c) 2015 botmonster@7items.com
+ * Copyright (c) 2015-2026 botmonster.com
  *
  * Licensed under the MIT license:
  *   http://www.opensource.org/licenses/mit-license.php
  *
  * Project home:
- *   http://botmonster.com/jquery-bootpag/
+ *   https://botmonster.com/jquery-bootpag/
  *
- * Version:  1.0.7
+ * Version: 3.0.1
  *
  */
 

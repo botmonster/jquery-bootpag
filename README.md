@@ -14,14 +14,14 @@ Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstra
 npm install bootpag
 ```
 
-**CDN (jsDelivr):**
+**CDN jsDelivr:**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bootpag/lib/jquery.bootpag.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
 ```
 
-**CDN (unpkg):**
+**CDN unpkg:**
 ```html
-<script src="https://unpkg.com/bootpag/lib/jquery.bootpag.min.js"></script>
+<script src="https://unpkg.com/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
 ```
 
 **Manual:** Download `jquery.bootpag.min.js` from the [latest GitHub Release](https://github.com/botmonster/jquery-bootpag/releases/latest).

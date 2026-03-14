@@ -1,6 +1,6 @@
 {
     "name": "bootpag",
-    "version": "3.0.0",
+    "version": "3.0.1",
     "description": "bootpag - dynamic pagination jQuery plugin. Works well with bootstrap or standalone.",
     "keywords": [
         "pagination",
@@ -32,6 +32,7 @@
         "test:jquery3": "npm i --no-save jquery@3.7.1 && jest --coverage",
         "test:jquery4": "npm i --no-save jquery@4.0.0 && jest --coverage",
         "test:matrix": "npm run test:jquery2 && npm run test:jquery3 && npm run test:jquery4",
+        "version": "node scripts/sync-version.js && npm run build && git add package.json package-lock.json src/jquery.bootpag.js README.md",
         "pretest": "npm run lint",
         "prepublishOnly": "npm run build"
     },
