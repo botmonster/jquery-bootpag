@@ -33,11 +33,12 @@ For older versions compatible with Bootstrap 4 or 3, see the [compatibility guid
 
 Check [live demo](https://botmonster.com/jquery-bootpag/) online or run `npm run build` and open `examples/index.html` in a browser.
 
+HTML
 ```html
 <p id="content">Dynamic page content</p>
 <p id="pagination-here"></p>
 ```
-
+JAVASCRIPT
 ```javascript
 $('#pagination-here').bootpag({
     total: 7,
