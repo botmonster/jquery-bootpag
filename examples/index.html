@@ -305,6 +305,37 @@
     $(".content3").html("Dynamic content for Page #" + num);
 });</code></pre>
             </div>
+            <h2 id="example-maxvisible1">maxVisible: 1 example</h2>
+            <ul>
+                <li>Only one page number visible at a time.</li>
+                <li>Use prev/next to navigate all 10 pages.</li>
+            </ul>
+            <div class="bs-docs-example">
+                <div class="border rounded p-3 text-center demo content5">
+                    Dynamic content here.
+                </div>
+                <p class="demo demo5"></p>
+            </div>
+            <h3>Source</h3>
+            <div class="code-snippet">
+                <button
+                    type="button"
+                    class="btn-clipboard"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Copy to clipboard"
+                    aria-label="Copy to clipboard"
+                >
+                    <svg width="20" height="20" fill="currentColor">
+                        <use href="#clipboard"></use>
+                    </svg>
+                </button>
+                <pre><code class="language-javascript">$('.demo5').bootpag({
+    total: 10,
+    maxVisible: 1
+}).on('page', function(event, num){
+    $(".content5").html("Dynamic content for Page #" + num);
+});</code></pre>
+            </div>
             <h2 id="example-full">Full example</h2>
             <ul>
                 <li>Use all options available</li>
@@ -385,6 +416,14 @@
                     })
                     .on("page", function (event, num) {
                         $(".content3").html("Dynamic content for Page #" + num); // or load content from the server
+                    });
+                $(".demo5")
+                    .bootpag({
+                        total: 10,
+                        maxVisible: 1,
+                    })
+                    .on("page", function (event, num) {
+                        $(".content5").html("Dynamic content for Page #" + num);
                     });
                 $(".demo4_top,.demo4_bottom")
                     .bootpag({

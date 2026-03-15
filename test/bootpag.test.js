@@ -156,6 +156,15 @@ describe('Leaps', () => {
     expect(handler.mock.calls[0][1]).toBe(6);
   });
 
+  test('with maxVisible: 1, next advances to the next page', () => {
+    var handler = jest.fn();
+    $('#pag').bootpag({ total: 5, maxVisible: 1, leaps: true }).on('page', handler);
+    $('#pag li.next').trigger('click');
+    expect(handler).toHaveBeenCalledTimes(1);
+    expect(handler.mock.calls[0][1]).toBe(2);
+    expect($('#pag li.active').attr('data-lp')).toBe('2');
+  });
+
   test('with leaps: false, next advances by 1', () => {
     var handler = jest.fn();
     $('#pag').bootpag({ total: 20, maxVisible: 5, leaps: false }).on('page', handler);
