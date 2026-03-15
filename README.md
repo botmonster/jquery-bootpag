@@ -86,8 +86,8 @@ $('#pagination-here').bootpag({
 | `prevClass` | string | `'prev'` | CSS class for prev button |
 | `firstClass` | string | `'first'` | CSS class for first button |
 | `lastClass` | string | `'last'` | CSS class for last button |
-| `itemClass` | string | `'page-item'` | CSS class added to every `<li>` (Bootstrap 4) |
-| `linkClass` | string | `'page-link'` | CSS class added to every `<a>` (Bootstrap 4) |
+| `itemClass` | string | `'page-item'` | CSS class added to every `<li>` |
+| `linkClass` | string | `'page-link'` | CSS class added to every `<a>` |
 
 ## Events
 
