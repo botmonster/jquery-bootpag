@@ -5,39 +5,25 @@
 [![npm downloads](https://img.shields.io/npm/dm/bootpag)](https://www.npmjs.com/package/bootpag)
 [![License](https://img.shields.io/npm/l/bootpag)](https://github.com/botmonster/jquery-bootpag/blob/main/LICENSE)
 
-Dynamic pagination jQuery plugin. Works with [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) or standalone.
+Dynamic pagination jQuery plugin. Works with [Bootstrap](https://getbootstrap.com/) or standalone.
 
 ## Installation
 
-**npm:**
 ```bash
 npm install bootpag
 ```
-Or use a CDN
+Or use a CDN:
 
-### For Bootstrap 4.x
-
-**CDN jsDelivr:**
+**CDN jsDelivr**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bootpag@4.0.0/dist/jquery.bootpag.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootpag@5.0.0/dist/jquery.bootpag.min.js"></script>
 ```
 
-**CDN unpkg:**
+**CDN unpkg**
 ```html
-<script src="https://unpkg.com/bootpag@4.0.0/dist/jquery.bootpag.min.js"></script>
+<script src="https://unpkg.com/bootpag@5.0.0/dist/jquery.bootpag.min.js"></script>
 ```
-
-### For Bootstrap 3.x
-
-**CDN jsDelivr:**
-```html
-<script src="https://cdn.jsdelivr.net/npm/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
-```
-
-**CDN unpkg:**
-```html
-<script src="https://unpkg.com/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
-```
+For older versions compatible with Bootstrap 4 or 3, see the [compatibility guide](compatibility.md).
 
 **Manual:** Download `jquery.bootpag.min.js` from the [latest GitHub Release](https://github.com/botmonster/jquery-bootpag/releases/latest).
 
