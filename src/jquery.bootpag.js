@@ -34,6 +34,8 @@
  * @property {string} prevClass - CSS class for the prev button li
  * @property {string} lastClass - CSS class for the last button li
  * @property {string} firstClass - CSS class for the first button li
+ * @property {string} itemClass - CSS class added to every page item li (Bootstrap 4: page-item)
+ * @property {string} linkClass - CSS class added to every page link a (Bootstrap 4: page-link)
  */
 (function($) {
 
@@ -68,7 +70,9 @@
                 nextClass: 'next',
                 prevClass: 'prev',
                 lastClass: 'last',
-                firstClass: 'first'
+                firstClass: 'first',
+                itemClass: 'page-item',
+                linkClass: 'page-link'
             },
             $owner.data('settings') || {},
             options || {});
@@ -176,26 +180,27 @@
                 p = ['<ul class="', settings.wrapClass, ' bootpag">'];
 
             if(settings.firstLastUse){
-                p = p.concat(['<li data-lp="1" class="', settings.firstClass,
-                    '"><a href="', href(1), '">', settings.first, '</a></li>']);
+                p = p.concat(['<li data-lp="1" class="', settings.itemClass, ' ', settings.firstClass,
+                    '"><a class="', settings.linkClass, '" href="', href(1), '">', settings.first, '</a></li>']);
             }
             if(settings.prev){
-                p = p.concat(['<li data-lp="1" class="', settings.prevClass,
-                    '"><a href="', href(1), '">', settings.prev, '</a></li>']);
+                p = p.concat(['<li data-lp="1" class="', settings.itemClass, ' ', settings.prevClass,
+                    '"><a class="', settings.linkClass, '" href="', href(1), '">', settings.prev, '</a></li>']);
             }
             for(var c = 1; c <= Math.min(settings.total, settings.maxVisible); c++){
-                p = p.concat(['<li data-lp="', c, '"><a href="', href(c), '">', c, '</a></li>']);
+                p = p.concat(['<li data-lp="', c, '" class="', settings.itemClass,
+                    '"><a class="', settings.linkClass, '" href="', href(c), '">', c, '</a></li>']);
             }
             if(settings.next){
                 lp = settings.leaps && settings.total > settings.maxVisible
                     ? Math.min(settings.maxVisible + 1, settings.total) : 2;
-                p = p.concat(['<li data-lp="', lp, '" class="',
-                    settings.nextClass, '"><a href="', href(lp),
+                p = p.concat(['<li data-lp="', lp, '" class="', settings.itemClass, ' ',
+                    settings.nextClass, '"><a class="', settings.linkClass, '" href="', href(lp),
                     '">', settings.next, '</a></li>']);
             }
             if(settings.firstLastUse){
-                p = p.concat(['<li data-lp="', settings.total, '" class="last"><a href="',
-                    href(settings.total),'">', settings.last, '</a></li>']);
+                p = p.concat(['<li data-lp="', settings.total, '" class="', settings.itemClass, ' last"><a class="',
+                    settings.linkClass, '" href="', href(settings.total),'">', settings.last, '</a></li>']);
             }
             p.push('</ul>');
             me.find('ul.bootpag').remove();

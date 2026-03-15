@@ -1,100 +1,163 @@
 <html>
-  <head>
-    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <head>
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            crossorigin="anonymous"
+        />
 
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css"
-      integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu"
-      crossorigin="anonymous"
-    />
+        <script
+            src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            crossorigin="anonymous"
+        ></script>
 
-    <script type="text/javascript" src="../dist/jquery.bootpag.min.js"></script>
+        <script
+            type="text/javascript"
+            src="../dist/jquery.bootpag.min.js"
+        ></script>
 
-    <title>bootpag - dynamic pagination jQuery plugin</title>
-    <style type="text/css">
-      p {
-        text-align: center;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Hello, this is bootpag</h1>
-        <h2>
-          Dynamic pagination jQuery plugin for
-          <a href="https://getbootstrap.com/docs/3.4/">Bootstrap 3.4.1</a>
-        </h2>
-      </div>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
+        />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
 
-      <p>
-        For more information see
-        <a href="https://botmonster.com/jquery-bootpag/">project homepage</a>
-      </p>
-      <!-- Demo time! -->
-      <h2 id="example-simple">Simple example</h2>
-      <ul>
-        <li>Init with 5 pages.</li>
-        <li>Change total to 10 on page select.</li>
-      </ul>
-      <div class="bs-docs-example">
-        <p class="well demo content1">Dynamic content here.</p>
-        <p class="demo demo1"></p>
-      </div>
-      <h3>Source</h3>
-      <pre class="prettyprint linenums languague-js">
-$('.demo1').bootpag({
+        <title>bootpag - dynamic pagination jQuery plugin</title>
+        <style type="text/css">
+            p {
+                text-align: center;
+            }
+            p.demo {
+                display: flex;
+                justify-content: center;
+            }
+            .bs-docs-example {
+                position: relative;
+                margin: 15px 0;
+                padding: 39px 19px 14px;
+                background-color: white;
+                border: 1px solid #ddd;
+                -webkit-border-radius: 4px;
+                -moz-border-radius: 4px;
+                border-radius: 4px;
+                -webkit-touch-callout: none;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+            }
+
+            .bs-docs-example::after {
+                content: "Example";
+                position: absolute;
+                top: -1px;
+                left: -1px;
+                padding: 3px 7px;
+                font-size: 12px;
+                font-weight: bold;
+                background-color: whiteSmoke;
+                border: 1px solid #ddd;
+                color: #9da0a4;
+                -webkit-border-radius: 4px 0 4px 0;
+                -moz-border-radius: 4px 0 4px 0;
+                border-radius: 4px 0 4px 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hello, this is bootpag</h1>
+                <h2>
+                    Dynamic pagination jQuery plugin for
+                    <a
+                        href="https://getbootstrap.com/docs/4.6/getting-started/introduction/"
+                        >Bootstrap 4.6.2</a
+                    >
+                </h2>
+            </div>
+
+            <p>
+                For more information see
+                <a href="https://botmonster.com/jquery-bootpag/"
+                    >project homepage</a
+                >
+            </p>
+            <!-- Demo time! -->
+            <h2 id="example-simple">Simple example</h2>
+            <ul>
+                <li>Init with 5 pages.</li>
+                <li>Change total to 10 on page select.</li>
+            </ul>
+            <div class="bs-docs-example">
+                <p class="card card-body demo content1">
+                    Dynamic content here.
+                </p>
+                <p class="demo demo1"></p>
+            </div>
+            <h3>Source</h3>
+            <pre><code class="language-javascript">$('.demo1').bootpag({
     total: 5
 }).on("page", function(event, num){
-    $(".content").html("Page " + num); // or some ajax content loading...
-
+    // ... load content from the server and update DOM
+    $(".content1").html("Dynamic content for Page #" + num);
     // ... after content load -> change total to 10
     $(this).bootpag({total: 10, maxVisible: 10});
-
-});</pre
-      >
-      <h2 id="example-advanced">Advanced example</h2>
-      <ul>
-        <li>Init with 23 pages.</li>
-        <li>Visible only 10 at once.</li>
-        <li>Start with page 3.</li>
-      </ul>
-      <div class="bs-docs-example">
-        <p class="well demo content2">Dynamic content here.</p>
-        <p class="demo demo2"></p>
-      </div>
-      <h3>Source</h3>
-      <pre class="prettyprint linenums languague-js">
-$('.demo2').bootpag({
+});</code></pre>
+            <h2 id="example-advanced">Advanced example</h2>
+            <ul>
+                <li>Init with 23 pages.</li>
+                <li>Visible only 10 at once.</li>
+                <li>Start with page 3.</li>
+            </ul>
+            <div class="bs-docs-example">
+                <p class="card card-body demo content2">
+                    Dynamic content here.
+                </p>
+                <p class="demo demo2"></p>
+            </div>
+            <h3>Source</h3>
+            <pre><code class="language-javascript">$('.demo2').bootpag({
    total: 23,
    page: 3,
    maxVisible: 10
 }).on('page', function(event, num){
-    $(".content2").html("Page " + num); // or some ajax content loading...
-});</pre
-      >
-      <h2 id="example-pro">Pro example</h2>
-      <ul>
-        <li>Init with 9 pages.</li>
-        <li>Visible only 6 at once.</li>
-        <li>Page number 5 active.</li>
-        <li>Prev/Next do no leap.</li>
-        <li>
-          Use template for hrefs:
-          <code>"#pro-page-{{number}}"</code>
-          .
-        </li>
-        <li>Custom next text</li>
-        <li>No prev text</li>
-      </ul>
-      <div class="bs-docs-example">
-        <p class="well demo content3">Dynamic content here.</p>
-        <p class="demo demo3"></p>
-      </div>
-      <h3>Source</h3>
-      <pre class="prettyprint linenums languague-js">
-$('.demo3').bootpag({
+    // ... load content from the server and update DOM
+    $(".content2").html("Dynamic content for Page #" + num);
+});</code></pre>
+            <h2 id="example-pro">Pro example</h2>
+            <ul>
+                <li>Init with 9 pages.</li>
+                <li>Visible only 6 at once.</li>
+                <li>Page number 5 active.</li>
+                <li>Prev/Next do no leap.</li>
+                <li>
+                    Use template for hrefs:
+                    <code>"#pro-page-{{number}}"</code>
+                    .
+                </li>
+                <li>Custom next text</li>
+                <li>No prev text</li>
+            </ul>
+            <div class="bs-docs-example">
+                <p class="card card-body demo content3">
+                    Dynamic content here.
+                </p>
+                <p class="demo demo3"></p>
+            </div>
+            <h3>Source</h3>
+            <pre><code class="language-javascript">$('.demo3').bootpag({
    total: 9,
    page: 5,
    maxVisible: 6,
@@ -103,99 +166,106 @@ $('.demo3').bootpag({
    next: 'next',
    prev: null
 }).on('page', function(event, num){
-    $(".content3").html("Page " + num); // or some ajax content loading...
-});</pre
-      >
-      <h2 id="example-full">Full example</h2>
-      <ul>
-        <li>Use all options available</li>
-        <li>Init two bootpags for same content</li>
-      </ul>
-      <div class="bs-docs-example">
-        <p class="demo demo4_top"></p>
-        <p class="well demo content4">Dynamic content here.</p>
-        <p class="demo demo4_bottom"></p>
-      </div>
-      <h3>Source</h3>
-      <pre class="prettyprint linenums languague-js">$('.demo4_top,.demo4_bottom').bootpag({
+    // ... load content from the server and update DOM
+    $(".content3").html("Dynamic content for Page #" + num);
+});</code></pre>
+            <h2 id="example-full">Full example</h2>
+            <ul>
+                <li>Use all options available</li>
+                <li>Init two bootpags for same content</li>
+            </ul>
+            <div class="bs-docs-example">
+                <p class="demo demo4_top"></p>
+                <p class="card card-body demo content4">
+                    Dynamic content here.
+                </p>
+                <p class="demo demo4_bottom"></p>
+            </div>
+            <h3>Source</h3>
+            <pre><code class="language-javascript">$('.demo4_top,.demo4_bottom').bootpag({
     total: 50,
     page: 2,
     maxVisible: 5,
     leaps: true,
     firstLastUse: true,
-    first: '<span aria-hidden="true">&larr;</span>',
-    last: '<span aria-hidden="true">&rarr;</span>',
+    first: '&lt;span aria-hidden="true"&gt;&amp;larr;&lt;/span&gt;',
+    last: '&lt;span aria-hidden="true"&gt;&amp;rarr;&lt;/span&gt;',
     wrapClass: 'pagination',
     activeClass: 'active',
     disabledClass: 'disabled',
     nextClass: 'next',
     prevClass: 'prev',
     lastClass: 'last',
-    firstClass: 'first'
+    firstClass: 'first',
+    itemClass: 'page-item',
+    linkClass: 'page-link'
 }).on("page", function(event, num){
-    $(".content4").html("Page " + num); // or some ajax content loading...
-}); </pre>
+    // ... load content from the server and update DOM
+    $(".content4").html("Dynamic content for Page #" + num);
+});</code></pre>
 
-      <script type="text/javascript">
-        a = $(".demo1")
-          .bootpag({
-            total: 5,
-          })
-          .on("page", function (event, num) {
-            $(".content1").html("Page " + num); // or some ajax content loading...
+            <script type="text/javascript">
+                a = $(".demo1")
+                    .bootpag({
+                        total: 5,
+                    })
+                    .on("page", function (event, num) {
+                        $(".content1").html("Dynamic content for Page #" + num); // or load content from the server
 
-            // ... after content load -> change total to 10
-            $(this).bootpag({ total: 10, maxVisible: 10 });
-          });
-        $(".demo2")
-          .bootpag({
-            total: 23,
-            page: 3,
-            maxVisible: 10,
-          })
-          .on("page", function (event, num) {
-            $(".content2").html("Page " + num); // or some ajax content loading...
-          });
-        $(".demo3")
-          .bootpag({
-            total: 9,
-            page: 5,
-            maxVisible: 6,
-            href: "#pro-page-{{number}}",
-            leaps: false,
-            next: "next",
-            prev: null,
-          })
-          .on("page", function (event, num) {
-            $(".content3").html("Page " + num); // or some ajax content loading...
-          });
-        $(".demo4_top,.demo4_bottom")
-          .bootpag({
-            total: 50,
-            page: 2,
-            maxVisible: 5,
-            leaps: true,
-            firstLastUse: true,
-            first: '<span aria-hidden="true">&larr;</span>',
-            last: '<span aria-hidden="true">&rarr;</span>',
-            wrapClass: "pagination",
-            activeClass: "active",
-            disabledClass: "disabled",
-            nextClass: "next",
-            prevClass: "prev",
-            lastClass: "last",
-            firstClass: "first",
-          })
-          .on("page", function (event, num) {
-            $(".content4").html("Page " + num); // or some ajax content loading...
-          })
-          .find(".pagination");
-      </script>
+                        // ... after content load -> change total to 10
+                        $(this).bootpag({ total: 10, maxVisible: 10 });
+                    });
+                $(".demo2")
+                    .bootpag({
+                        total: 23,
+                        page: 3,
+                        maxVisible: 10,
+                    })
+                    .on("page", function (event, num) {
+                        $(".content2").html("Dynamic content for Page #" + num); // or load content from the server
+                    });
+                $(".demo3")
+                    .bootpag({
+                        total: 9,
+                        page: 5,
+                        maxVisible: 6,
+                        href: "#pro-page-{{number}}",
+                        leaps: false,
+                        next: "next",
+                        prev: null,
+                    })
+                    .on("page", function (event, num) {
+                        $(".content3").html("Dynamic content for Page #" + num); // or load content from the server
+                    });
+                $(".demo4_top,.demo4_bottom")
+                    .bootpag({
+                        total: 50,
+                        page: 2,
+                        maxVisible: 5,
+                        leaps: true,
+                        firstLastUse: true,
+                        first: '<span aria-hidden="true">&larr;</span>',
+                        last: '<span aria-hidden="true">&rarr;</span>',
+                        wrapClass: "pagination",
+                        activeClass: "active",
+                        disabledClass: "disabled",
+                        nextClass: "next",
+                        prevClass: "prev",
+                        lastClass: "last",
+                        firstClass: "first",
+                        itemClass: "page-item",
+                        linkClass: "page-link",
+                    })
+                    .on("page", function (event, num) {
+                        $(".content4").html("Dynamic content for Page #" + num); // or load content from the server
+                    })
+                    .find(".pagination");
+            </script>
 
-      <footer>
-        (c) 2013-2026
-        <a href="https://botmonster.com">botmonster.com</a>
-      </footer>
-    </div>
-  </body>
+            <footer>
+                (c) 2013-2026
+                <a href="https://botmonster.com">botmonster.com</a>
+            </footer>
+        </div>
+    </body>
 </html>

@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/bootpag)](https://www.npmjs.com/package/bootpag)
 [![License](https://img.shields.io/npm/l/bootpag)](https://github.com/botmonster/jquery-bootpag/blob/main/LICENSE)
 
-Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstrap.com/docs/3.4/) or standalone.
+Dynamic pagination jQuery plugin. Works with [Bootstrap 4.6](https://getbootstrap.com/docs/4.6/getting-started/introduction/) or standalone.
 
 ## Installation
 
@@ -13,6 +13,21 @@ Dynamic pagination jQuery plugin. Works with [Bootstrap 3.4](https://getbootstra
 ```bash
 npm install bootpag
 ```
+Or use a CDN
+
+### For Bootstrap 4.x
+
+**CDN jsDelivr:**
+```html
+<script src="https://cdn.jsdelivr.net/npm/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
+```
+
+**CDN unpkg:**
+```html
+<script src="https://unpkg.com/bootpag@3.0.1/dist/jquery.bootpag.min.js"></script>
+```
+
+### For Bootstrap 3.x
 
 **CDN jsDelivr:**
 ```html
@@ -44,7 +59,8 @@ $('#pagination-here').bootpag({
     maxVisible: 5,
     leaps: true
 }).on("page", function(event, num){
-    $("#content").html("Page " + num); // or some ajax content loading...
+    // ... load content from the server and update DOM
+    $("#content").html("Page " + num);
 });
 ```
 
@@ -61,8 +77,8 @@ $('#pagination-here').bootpag({
 | `next` | string\|null | `'&raquo;'` | Next button text/HTML (`null` to hide) |
 | `prev` | string\|null | `'&laquo;'` | Prev button text/HTML (`null` to hide) |
 | `firstLastUse` | boolean | `false` | Show first/last page buttons |
-| `first` | string | `'&larr;'` | First button text/HTML |
-| `last` | string | `'&rarr;'` | Last button text/HTML |
+| `first` | string | `'<span aria-hidden="true">&larr;</span>'` | First button text/HTML |
+| `last` | string | `'<span aria-hidden="true">&rarr;</span>'` | Last button text/HTML |
 | `wrapClass` | string | `'pagination'` | CSS class for the `<ul>` wrapper |
 | `activeClass` | string | `'active'` | CSS class for the active page |
 | `disabledClass` | string | `'disabled'` | CSS class for disabled buttons |
@@ -70,6 +86,8 @@ $('#pagination-here').bootpag({
 | `prevClass` | string | `'prev'` | CSS class for prev button |
 | `firstClass` | string | `'first'` | CSS class for first button |
 | `lastClass` | string | `'last'` | CSS class for last button |
+| `itemClass` | string | `'page-item'` | CSS class added to every `<li>` (Bootstrap 4) |
+| `linkClass` | string | `'page-link'` | CSS class added to every `<a>` (Bootstrap 4) |
 
 ## Events
 
@@ -94,6 +112,7 @@ npm install        # Install dependencies
 npm run lint       # Run ESLint
 npm test           # Run lint + tests with coverage
 npm run build      # Build dist/jquery.bootpag.min.js
+npm run watch      # Build, serve examples/ and auto-reload on changes
 ```
 
 ## License
