@@ -10,7 +10,7 @@
  * Project homepage:
  *   https://botmonster.com/jquery-bootpag/
  *
- * Version: 3.0.1
+ * Version: 4.0.0
  *
  */
 
