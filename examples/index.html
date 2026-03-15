@@ -508,6 +508,64 @@
             </script>
 
             <script>
+                (function () {
+                    var STORAGE_KEY = "bootpag-theme";
+                    var THEMES = ["auto", "light", "dark"];
+                    var ICONS = {
+                        auto: "#icon-auto",
+                        light: "#icon-sun",
+                        dark: "#icon-moon",
+                    };
+                    var HLJS_LIGHT =
+                        "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css";
+                    var HLJS_DARK =
+                        "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css";
+
+                    var mediaQuery = window.matchMedia(
+                        "(prefers-color-scheme: dark)",
+                    );
+                    var currentTheme =
+                        localStorage.getItem(STORAGE_KEY) || "auto";
+
+                    function resolvedTheme(theme) {
+                        return theme === "auto"
+                            ? mediaQuery.matches
+                                ? "dark"
+                                : "light"
+                            : theme;
+                    }
+
+                    function applyTheme(theme) {
+                        var resolved = resolvedTheme(theme);
+                        document.documentElement.setAttribute(
+                            "data-bs-theme",
+                            resolved,
+                        );
+                        document
+                            .getElementById("theme-icon")
+                            .setAttribute("href", ICONS[theme]);
+                        document.getElementById("hljs-theme").href =
+                            resolved === "dark" ? HLJS_DARK : HLJS_LIGHT;
+                    }
+
+                    applyTheme(currentTheme);
+
+                    mediaQuery.addEventListener("change", function () {
+                        if (currentTheme === "auto") applyTheme("auto");
+                    });
+
+                    document
+                        .getElementById("theme-toggle")
+                        .addEventListener("click", function () {
+                            var idx = THEMES.indexOf(currentTheme);
+                            currentTheme = THEMES[(idx + 1) % THEMES.length];
+                            localStorage.setItem(STORAGE_KEY, currentTheme);
+                            applyTheme(currentTheme);
+                        });
+                })();
+            </script>
+
+            <script>
                 // Initialize tooltips — Bootstrap 5 requires explicit opt-in
                 document
                     .querySelectorAll('[data-bs-toggle="tooltip"]')
