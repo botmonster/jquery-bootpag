@@ -5,7 +5,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/bootpag)](https://www.npmjs.com/package/bootpag)
 [![License](https://img.shields.io/npm/l/bootpag)](https://github.com/botmonster/jquery-bootpag/blob/main/LICENSE)
 
-Dynamic pagination jQuery plugin. Works with [Bootstrap](https://getbootstrap.com/) or standalone.
+Dynamic pagination [jQuery](https://jquery.com/) plugin. Works with [Bootstrap](https://getbootstrap.com/) or standalone. [Live demo](https://botmonster.com/jquery-bootpag/) online.
 
 ## Installation
 
