@@ -8,9 +8,13 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    environment:
+      name: npm
+      url: https://www.npmjs.com/package/bootpag
     permissions:
       contents: write
       id-token: write
+      deployments: write
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
