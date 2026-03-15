@@ -107,20 +107,16 @@
                     Math.floor((page - 1) / maxV) * maxV : page - 1;
 
             if(settings.firstLastUse) {
-                $page
-                    .first()
+                $page.first()
                     .toggleClass(settings.disabledClass, page === 1);
             }
 
-            var lfirst = $page.first();
-            if(settings.firstLastUse) {
-                lfirst = lfirst.next();
+            if(settings.prev) {
+                $bootpag.find('li.' + settings.prevClass)
+                    .toggleClass(settings.disabledClass, page === 1)
+                    .attr('data-lp', lp)
+                    .find('a').attr('href', href(lp));
             }
-
-            lfirst
-                .toggleClass(settings.disabledClass, page === 1)
-                .attr('data-lp', lp)
-                .find('a').attr('href', href(lp));
 
             step = settings.maxVisible == 1 ? 0 : 1;
 
@@ -128,19 +124,17 @@
                 settings.leaps && page + 1 <= settings.total - settings.maxVisible ?
                     vis + settings.maxVisible + step: page + 1;
 
-            var llast = $page.last();
-            if(settings.firstLastUse) {
-                llast = llast.prev();
+            if(settings.next) {
+                $bootpag.find('li.' + settings.nextClass)
+                    .toggleClass(settings.disabledClass, page === settings.total)
+                    .attr('data-lp', lp)
+                    .find('a').attr('href', href(lp));
             }
 
-            llast
-                .toggleClass(settings.disabledClass, page === settings.total)
-                .attr('data-lp', lp)
-                .find('a').attr('href', href(lp));
-
-            $page
-                .last()
-                .toggleClass(settings.disabledClass, page === settings.total);
+            if(settings.firstLastUse) {
+                $page.last()
+                    .toggleClass(settings.disabledClass, page === settings.total);
+            }
 
 
             var $currPage = $page.filter('[data-lp='+page+']');

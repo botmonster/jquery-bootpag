@@ -305,6 +305,26 @@ describe('Edge Cases', () => {
     expect($('#pag li.next').length).toBe(1);
   });
 
+  test('clicking page 1 with prev: null fires page 1 event (pro example)', () => {
+    var handler = jest.fn();
+    $('#pag').bootpag({
+      total: 9,
+      page: 5,
+      maxVisible: 6,
+      href: '#pro-page-{{number}}',
+      leaps: false,
+      next: 'next',
+      prev: null
+    }).on('page', handler);
+
+    // Click the visible li whose anchor text is "1" (the first page-number button)
+    $('#pag ul.bootpag li').not('.next').first().trigger('click');
+
+    expect(handler).toHaveBeenCalledTimes(1);
+    expect(handler.mock.calls[0][1]).toBe(1);
+    expect($('#pag li.active').attr('data-lp')).toBe('1');
+  });
+
   test('next: null omits the next button', () => {
     $('#pag').bootpag({ total: 5, next: null });
     expect($('#pag li.next').length).toBe(0);
