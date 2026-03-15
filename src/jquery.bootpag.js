@@ -118,7 +118,7 @@
                     .find('a').attr('href', href(lp));
             }
 
-            step = settings.maxVisible == 1 ? 0 : 1;
+            step = 1;
 
             lp = page + 1 > settings.total ? settings.total :
                 settings.leaps && page + 1 <= settings.total - settings.maxVisible ?
