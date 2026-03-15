@@ -1,9 +1,10 @@
-<html>
+<!doctype html>
+<html lang="en">
     <head>
         <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
-            integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+            integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
             crossorigin="anonymous"
         />
 
@@ -13,8 +14,8 @@
             crossorigin="anonymous"
         ></script>
         <script
-            src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"
         ></script>
 
@@ -24,18 +25,16 @@
         ></script>
 
         <link
+            id="hljs-theme"
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css"
         />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-        <script>
-            hljs.highlightAll();
-        </script>
 
         <title>bootpag - dynamic pagination jQuery plugin</title>
         <style type="text/css">
             p {
                 text-align: center;
+                margin-top: 2rem;
             }
             p.demo {
                 display: flex;
@@ -45,8 +44,8 @@
                 position: relative;
                 margin: 15px 0;
                 padding: 39px 19px 14px;
-                background-color: white;
-                border: 1px solid #ddd;
+                background-color: var(--bs-body-bg);
+                border: 1px solid var(--bs-border-color);
                 -webkit-border-radius: 4px;
                 -moz-border-radius: 4px;
                 border-radius: 4px;
@@ -58,6 +57,31 @@
                 user-select: none;
             }
 
+            .code-snippet {
+                position: relative;
+                border: 1px solid var(--bs-border-color);
+                border-radius: 0.375rem;
+                margin-bottom: 1rem;
+            }
+            .code-snippet pre {
+                margin: 0;
+                border-radius: 0 0 0.375rem 0.375rem;
+            }
+            .btn-clipboard {
+                position: absolute;
+                top: 0.4rem;
+                right: 0.4rem;
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                padding: 0.25rem 0.4rem;
+                color: var(--bs-secondary-color);
+                border-radius: 0.25rem;
+            }
+            .btn-clipboard:hover {
+                color: var(--bs-body-color);
+            }
+
             .bs-docs-example::after {
                 content: "Example";
                 position: absolute;
@@ -66,24 +90,97 @@
                 padding: 3px 7px;
                 font-size: 12px;
                 font-weight: bold;
-                background-color: whiteSmoke;
-                border: 1px solid #ddd;
-                color: #9da0a4;
+                background-color: var(--bs-tertiary-bg);
+                border: 1px solid var(--bs-border-color);
+                color: var(--bs-secondary-color);
                 -webkit-border-radius: 4px 0 4px 0;
                 -moz-border-radius: 4px 0 4px 0;
                 border-radius: 4px 0 4px 0;
             }
+
+            #theme-toggle {
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+                z-index: 1050;
+                width: 2.5rem;
+                height: 2.5rem;
+                padding: 0;
+                border-radius: 50%;
+                border: 1px solid var(--bs-border-color);
+                background-color: var(--bs-body-bg);
+                color: var(--bs-body-color);
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                transition:
+                    background-color 0.2s,
+                    color 0.2s,
+                    border-color 0.2s;
+            }
+            #theme-toggle:hover {
+                background-color: var(--bs-tertiary-bg);
+            }
         </style>
     </head>
     <body>
+        <button
+            id="theme-toggle"
+            aria-label="Toggle theme"
+            title="Toggle theme"
+        >
+            <svg width="18" height="18" fill="currentColor">
+                <use id="theme-icon" href="#icon-auto"></use>
+            </svg>
+        </button>
+        <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+            <symbol id="clipboard" viewBox="0 0 16 16">
+                <path
+                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+                />
+                <path
+                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+                />
+            </symbol>
+            <symbol id="clipboard-check" viewBox="0 0 16 16">
+                <path
+                    fill-rule="evenodd"
+                    d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0"
+                />
+                <path
+                    d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1z"
+                />
+                <path
+                    d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0z"
+                />
+            </symbol>
+            <symbol id="icon-sun" viewBox="0 0 16 16">
+                <path
+                    d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6m0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8M8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0m0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13m8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5M3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8m10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0m-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0m9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707M4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708"
+                />
+            </symbol>
+            <symbol id="icon-moon" viewBox="0 0 16 16">
+                <path
+                    d="M6 .278a.77.77 0 0 1 .08.858 7.2 7.2 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277q.792-.001 1.533-.16a.79.79 0 0 1 .81.316.73.73 0 0 1-.031.893A8.35 8.35 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.75.75 0 0 1 6 .278"
+                />
+            </symbol>
+            <symbol id="icon-auto" viewBox="0 0 16 16">
+                <path
+                    d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"
+                />
+            </symbol>
+        </svg>
         <div class="container">
-            <div class="jumbotron">
+            <div class="p-5 mb-4 bg-body-secondary rounded-3">
                 <h1>Hello, this is bootpag</h1>
                 <h2>
-                    Dynamic pagination jQuery plugin for
-                    <a
-                        href="https://getbootstrap.com/docs/4.6/getting-started/introduction/"
-                        >Bootstrap 4.6.2</a
+                    Dynamic pagination
+                    <a href="https://jquery.com/" target="_blank">jQuery</a>
+                    plugin for
+                    <a href="https://getbootstrap.com/" target="_blank"
+                        >Bootstrap 5</a
                     >
                 </h2>
             </div>
@@ -91,7 +188,7 @@
             <p>
                 For more information see
                 <a href="https://botmonster.com/jquery-bootpag/"
-                    >project homepage</a
+                    >bootpag homepage</a
                 >
             </p>
             <!-- Demo time! -->
@@ -101,13 +198,25 @@
                 <li>Change total to 10 on page select.</li>
             </ul>
             <div class="bs-docs-example">
-                <p class="card card-body demo content1">
+                <div class="border rounded p-3 text-center demo content1">
                     Dynamic content here.
-                </p>
+                </div>
                 <p class="demo demo1"></p>
             </div>
             <h3>Source</h3>
-            <pre><code class="language-javascript">$('.demo1').bootpag({
+            <div class="code-snippet">
+                <button
+                    type="button"
+                    class="btn-clipboard"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Copy to clipboard"
+                    aria-label="Copy to clipboard"
+                >
+                    <svg width="20" height="20" fill="currentColor">
+                        <use href="#clipboard"></use>
+                    </svg>
+                </button>
+                <pre><code class="language-javascript">$('.demo1').bootpag({
     total: 5
 }).on("page", function(event, num){
     // ... load content from the server and update DOM
@@ -115,6 +224,7 @@
     // ... after content load -> change total to 10
     $(this).bootpag({total: 10, maxVisible: 10});
 });</code></pre>
+            </div>
             <h2 id="example-advanced">Advanced example</h2>
             <ul>
                 <li>Init with 23 pages.</li>
@@ -122,13 +232,25 @@
                 <li>Start with page 3.</li>
             </ul>
             <div class="bs-docs-example">
-                <p class="card card-body demo content2">
+                <div class="border rounded p-3 text-center demo content2">
                     Dynamic content here.
-                </p>
+                </div>
                 <p class="demo demo2"></p>
             </div>
             <h3>Source</h3>
-            <pre><code class="language-javascript">$('.demo2').bootpag({
+            <div class="code-snippet">
+                <button
+                    type="button"
+                    class="btn-clipboard"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Copy to clipboard"
+                    aria-label="Copy to clipboard"
+                >
+                    <svg width="20" height="20" fill="currentColor">
+                        <use href="#clipboard"></use>
+                    </svg>
+                </button>
+                <pre><code class="language-javascript">$('.demo2').bootpag({
    total: 23,
    page: 3,
    maxVisible: 10
@@ -136,6 +258,7 @@
     // ... load content from the server and update DOM
     $(".content2").html("Dynamic content for Page #" + num);
 });</code></pre>
+            </div>
             <h2 id="example-pro">Pro example</h2>
             <ul>
                 <li>Init with 9 pages.</li>
@@ -151,13 +274,25 @@
                 <li>No prev text</li>
             </ul>
             <div class="bs-docs-example">
-                <p class="card card-body demo content3">
+                <div class="border rounded p-3 text-center demo content3">
                     Dynamic content here.
-                </p>
+                </div>
                 <p class="demo demo3"></p>
             </div>
             <h3>Source</h3>
-            <pre><code class="language-javascript">$('.demo3').bootpag({
+            <div class="code-snippet">
+                <button
+                    type="button"
+                    class="btn-clipboard"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Copy to clipboard"
+                    aria-label="Copy to clipboard"
+                >
+                    <svg width="20" height="20" fill="currentColor">
+                        <use href="#clipboard"></use>
+                    </svg>
+                </button>
+                <pre><code class="language-javascript">$('.demo3').bootpag({
    total: 9,
    page: 5,
    maxVisible: 6,
@@ -169,6 +304,7 @@
     // ... load content from the server and update DOM
     $(".content3").html("Dynamic content for Page #" + num);
 });</code></pre>
+            </div>
             <h2 id="example-full">Full example</h2>
             <ul>
                 <li>Use all options available</li>
@@ -176,13 +312,25 @@
             </ul>
             <div class="bs-docs-example">
                 <p class="demo demo4_top"></p>
-                <p class="card card-body demo content4">
+                <div class="border rounded p-3 text-center demo content4">
                     Dynamic content here.
-                </p>
+                </div>
                 <p class="demo demo4_bottom"></p>
             </div>
             <h3>Source</h3>
-            <pre><code class="language-javascript">$('.demo4_top,.demo4_bottom').bootpag({
+            <div class="code-snippet">
+                <button
+                    type="button"
+                    class="btn-clipboard"
+                    data-bs-toggle="tooltip"
+                    data-bs-title="Copy to clipboard"
+                    aria-label="Copy to clipboard"
+                >
+                    <svg width="20" height="20" fill="currentColor">
+                        <use href="#clipboard"></use>
+                    </svg>
+                </button>
+                <pre><code class="language-javascript">$('.demo4_top,.demo4_bottom').bootpag({
     total: 50,
     page: 2,
     maxVisible: 5,
@@ -203,6 +351,7 @@
     // ... load content from the server and update DOM
     $(".content4").html("Dynamic content for Page #" + num);
 });</code></pre>
+            </div>
 
             <script type="text/javascript">
                 a = $(".demo1")
@@ -262,10 +411,119 @@
                     .find(".pagination");
             </script>
 
+            <script>
+                (function () {
+                    var STORAGE_KEY = "bootpag-theme";
+                    var THEMES = ["auto", "light", "dark"];
+                    var ICONS = {
+                        auto: "#icon-auto",
+                        light: "#icon-sun",
+                        dark: "#icon-moon",
+                    };
+                    var HLJS_LIGHT =
+                        "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-light.min.css";
+                    var HLJS_DARK =
+                        "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css";
+
+                    var mediaQuery = window.matchMedia(
+                        "(prefers-color-scheme: dark)",
+                    );
+                    var currentTheme =
+                        localStorage.getItem(STORAGE_KEY) || "auto";
+
+                    function resolvedTheme(theme) {
+                        return theme === "auto"
+                            ? mediaQuery.matches
+                                ? "dark"
+                                : "light"
+                            : theme;
+                    }
+
+                    function applyTheme(theme) {
+                        var resolved = resolvedTheme(theme);
+                        document.documentElement.setAttribute(
+                            "data-bs-theme",
+                            resolved,
+                        );
+                        document
+                            .getElementById("theme-icon")
+                            .setAttribute("href", ICONS[theme]);
+                        document.getElementById("hljs-theme").href =
+                            resolved === "dark" ? HLJS_DARK : HLJS_LIGHT;
+                    }
+
+                    applyTheme(currentTheme);
+
+                    mediaQuery.addEventListener("change", function () {
+                        if (currentTheme === "auto") applyTheme("auto");
+                    });
+
+                    document
+                        .getElementById("theme-toggle")
+                        .addEventListener("click", function () {
+                            var idx = THEMES.indexOf(currentTheme);
+                            currentTheme = THEMES[(idx + 1) % THEMES.length];
+                            localStorage.setItem(STORAGE_KEY, currentTheme);
+                            applyTheme(currentTheme);
+                        });
+                })();
+            </script>
+
+            <script>
+                // Initialize tooltips — Bootstrap 5 requires explicit opt-in
+                document
+                    .querySelectorAll('[data-bs-toggle="tooltip"]')
+                    .forEach(function (el) {
+                        new bootstrap.Tooltip(el);
+                    });
+
+                // Copy to clipboard
+                document
+                    .querySelectorAll(".btn-clipboard")
+                    .forEach(function (btn) {
+                        btn.addEventListener("click", function () {
+                            var code = btn
+                                .closest(".code-snippet")
+                                .querySelector("code").innerText;
+                            navigator.clipboard
+                                .writeText(code)
+                                .then(function () {
+                                    var tooltip =
+                                        bootstrap.Tooltip.getInstance(btn);
+                                    btn.querySelector("use").setAttribute(
+                                        "href",
+                                        "#clipboard-check",
+                                    );
+                                    tooltip.hide();
+                                    btn.setAttribute(
+                                        "data-bs-title",
+                                        "Copied!",
+                                    );
+                                    tooltip.show();
+                                    setTimeout(function () {
+                                        btn.querySelector("use").setAttribute(
+                                            "href",
+                                            "#clipboard",
+                                        );
+                                        tooltip.hide();
+                                        btn.setAttribute(
+                                            "data-bs-title",
+                                            "Copy to clipboard",
+                                        );
+                                    }, 2000);
+                                });
+                        });
+                    });
+            </script>
+
             <footer>
                 (c) 2013-2026
                 <a href="https://botmonster.com">botmonster.com</a>
             </footer>
         </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+        <script>
+            hljs.highlightAll();
+        </script>
     </body>
 </html>
