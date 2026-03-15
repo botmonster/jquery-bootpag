@@ -1,6 +1,6 @@
 {
     "name": "bootpag",
-    "version": "4.0.0",
+    "version": "5.0.0",
     "description": "bootpag - dynamic pagination jQuery plugin. Works well with bootstrap or standalone.",
     "keywords": [
         "pagination",
