@@ -17,12 +17,12 @@ Or use a CDN:
 
 **CDN jsDelivr**
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bootpag@5.0.0/dist/jquery.bootpag.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootpag@5.0.1/dist/jquery.bootpag.min.js"></script>
 ```
 
 **CDN unpkg**
 ```html
-<script src="https://unpkg.com/bootpag@5.0.0/dist/jquery.bootpag.min.js"></script>
+<script src="https://unpkg.com/bootpag@5.0.1/dist/jquery.bootpag.min.js"></script>
 ```
 For older versions compatible with Bootstrap 4 or 3, see the [compatibility guide](compatibility.md).
 
